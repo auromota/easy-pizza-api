@@ -1,0 +1,49 @@
+{
+  "name": "easy-pizza-api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app/app.js",
+  "scripts": {
+    "test": "node_modules/.bin/_mocha --compilers tsx:ts-node/register --opts mocha.opts",
+    "test:auto": "node_modules/.bin/_mocha --compilers tsx:ts-node/register --opts mocha.opts --watch",
+    "compile": "node_modules/.bin/tsc",
+    "start": "npm run compile && node app/app.js",
+    "dev": "./node_modules/.bin/nodemon -e ts --exec \"npm start\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/auromota/easy-pizza-api.git"
+  },
+  "author": "Auro Mota",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/auromota/easy-pizza-api/issues"
+  },
+  "homepage": "https://github.com/auromota/easy-pizza-api#readme",
+  "dependencies": {
+    "@types/bcrypt-nodejs": "0.0.30",
+    "@types/dotenv": "^2.0.19",
+    "@types/is-my-json-valid": "0.0.19",
+    "@types/jsonwebtoken": "^7.1.33",
+    "@types/mongoose": "^4.6.1",
+    "@types/node": "^6.0.45",
+    "@types/restify": "^2.0.33",
+    "bcrypt-nodejs": "0.0.3",
+    "dotenv": "^2.0.0",
+    "is-my-json-valid": "^2.15.0",
+    "jsonwebtoken": "^7.1.6",
+    "mongodb": "^2.2.11",
+    "mongoose": "^4.6.8",
+    "restify": "^4.1.1"
+  },
+  "devDependencies": {
+    "@types/chai": "^3.4.34",
+    "@types/mocha": "^2.2.32",
+    "chai": "^3.5.0",
+    "mocha": "^3.1.2",
+    "nodemon": "^1.11.0",
+    "ts-node": "^1.7.0",
+    "tslint": "^3.15.1",
+    "typescript": "^2.0.3"
+  }
+}
