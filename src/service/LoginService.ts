@@ -1,7 +1,7 @@
 import * as Restify from 'restify';
-import { UserDao } from '../db/UserDao';
-import { User } from '../db/User';
-import { IUser } from '../db/IUser';
+import { UserDao } from '../database/user/UserDao';
+import { User } from '../database/user/User';
+import { IUser } from '../database/user/IUser';
 import { JWTUtils } from '../security/JWTUtils';
 import { BCryptUtils } from '../security/BCryptUtils';
 import { ErrorUtils } from '../error/ErrorUtils';

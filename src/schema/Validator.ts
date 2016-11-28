@@ -13,7 +13,8 @@ export namespace Validator {
             properties: {
                 username: { type: 'string' },
                 password: { type: 'string' }
-            }
+            },
+            additionalProperties: false
         });
         return validate(data);
     }
@@ -26,12 +27,26 @@ export namespace Validator {
                 username: { type: 'string' },
                 password: { type: 'string' },
                 email: { type: 'string', format: 'email' },
-            }
+            },
+            additionalProperties: false
         },
             {
                 formats: formats
             }
         );
+        return validate(data);
+    }
+
+    export function createDrink(data: any): boolean {
+        let validate = validator({
+            required: ['name', 'price'],
+            type: 'object',
+            properties: {
+                name: { type: 'string' },
+                price: { type: 'number' }
+            },
+            additionalProperties: false
+        });
         return validate(data);
     }
 }

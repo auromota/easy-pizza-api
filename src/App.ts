@@ -3,7 +3,7 @@ import { settings } from './config/config';
 import { Router } from './route/Router';
 import * as dotenv from 'dotenv';
 import { connect, connection } from 'mongoose';
-import { Connection } from './db/Connection';
+import { Connection } from './database/Connection';
 
 dotenv.config();
 
