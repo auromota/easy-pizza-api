@@ -9,6 +9,8 @@ export class ErrorUtils {
                 return this.InvalidToken;
             case EasyPizzaErrorType.NoTokenProvided:
                 return this.NoTokenProvided;
+            case EasyPizzaErrorType.InvalidPassword:
+                return this.InvalidPassword;
             default:
                 throw Error('Error implementation is missing.');
         }
@@ -20,5 +22,9 @@ export class ErrorUtils {
 
     private static get NoTokenProvided(): EasyPizzaError {
         return new EasyPizzaError(403, EasyPizzaErrorType.NoTokenProvided, 'No token provided');
+    }
+
+    private static get InvalidPassword(): EasyPizzaError {
+        return new EasyPizzaError(403, EasyPizzaErrorType.InvalidPassword, 'Invalid password');
     }
 }

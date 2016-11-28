@@ -1,4 +1,5 @@
 export enum EasyPizzaErrorType {
     InvalidToken,
-    NoTokenProvided
+    NoTokenProvided,
+    InvalidPassword
 }

@@ -14,11 +14,7 @@ export namespace Validator {
                 username: { type: 'string' },
                 password: { type: 'string' }
             }
-        },
-            {
-                formats: formats
-            }
-        );
+        });
         return validate(data);
     }
 
