@@ -1,25 +1,26 @@
-import * as restify from 'restify';
+import * as Restify from 'restify';
 import { settings } from './config/config';
 import { Router } from './route/Router';
-import * as dotenv from 'dotenv';
+import * as Dotenv from 'dotenv';
 import { connect, connection } from 'mongoose';
 import { Connection } from './database/Connection';
+import { WebSocket } from './ws/WebSocket';
 
-dotenv.config();
+Dotenv.config();
 
-export let api = restify.createServer({
-    name: settings.name
-});
+export let server = Restify.createServer(settings);
 
-restify.CORS.ALLOW_HEADERS.push('authorization');
-api.use(restify.CORS());
-api.pre(restify.pre.sanitizePath());
-api.use(restify.acceptParser(api.acceptable));
-api.use(restify.bodyParser());
-api.use(restify.queryParser());
-api.use(restify.fullResponse());
+let ws = new WebSocket(server);
 
-Router.applyRoutes(api);
+Restify.CORS.ALLOW_HEADERS.push('authorization');
+server.use(Restify.CORS());
+server.pre(Restify.pre.sanitizePath());
+server.use(Restify.acceptParser(server.acceptable));
+server.use(Restify.bodyParser());
+server.use(Restify.queryParser());
+server.use(Restify.fullResponse());
+
+Router.applyRoutes(server);
 
 connect(Connection.getConnectionString());
 
@@ -29,7 +30,7 @@ connection.on('connected', () => {
 });
 
 function start() {
-    api.listen(settings.port, () => {
+    server.listen(settings.port, () => {
         console.log('Server is ready at port ' + settings.port);
     });
 }
