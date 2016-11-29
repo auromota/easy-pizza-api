@@ -9,7 +9,8 @@ export class Router {
     public static applyRoutes(api: Restify.Server) {
         api.post('/api/login', LoginController.login);
         api.post('/api/users', UserController.create);
-        api.post('/api/drinks', AuthHandler.isAuthorized, DrinkController.create);
+        api.post('/api/drinks', AuthHandler.authorizeRequest, DrinkController.create);
+        api.put('/api/drinks', AuthHandler.authorizeRequest, DrinkController.update);
     }
 
 }

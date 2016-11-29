@@ -49,4 +49,18 @@ export namespace Validator {
         });
         return validate(data);
     }
+
+    export function updateDrink(data: any): boolean {
+        let validate = validator({
+            required: ['id', 'name', 'price'],
+            type: 'object',
+            properties: {
+                id: { type: 'string' },
+                name: { type: 'string' },
+                price: { type: 'number' }
+            },
+            additionalProperties: false
+        });
+        return validate(data);
+    }
 }

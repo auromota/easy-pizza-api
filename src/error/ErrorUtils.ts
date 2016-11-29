@@ -3,7 +3,12 @@ import { EasyPizzaError } from './EasyPizzaError';
 
 export class ErrorUtils {
 
-    static error(type: EasyPizzaErrorType): Error {
+    /**
+     * Builds a EasyPizzaError based on a type.
+     * 
+     * @return an EasyPizzaError, which implements the Error interface
+     */
+    public static error(type: EasyPizzaErrorType): EasyPizzaError {
         switch (type) {
             case EasyPizzaErrorType.InvalidToken:
                 return this.InvalidToken;

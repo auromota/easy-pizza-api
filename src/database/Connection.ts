@@ -1,5 +1,10 @@
 export namespace Connection {
 
+    /**
+     *  Builds the connection string using environment variables.
+     * 
+     * @return a connection string
+     */
     export function getConnectionString(): string {
         let username = process.env.MONGODB_USERNAME;
         let password = process.env.MONGODB_PASSWORD;

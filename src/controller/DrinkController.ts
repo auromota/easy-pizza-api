@@ -13,4 +13,13 @@ export class DrinkController {
         }
     }
 
+    public static update(req: Restify.Request, res: Restify.Response, next: Restify.Next): void {
+        if (Validator.updateDrink(req.body)) {
+            DrinkService.update(req, res, next);
+        } else {
+            res.send(400);
+            next(false);
+        }
+    }
+
 }
