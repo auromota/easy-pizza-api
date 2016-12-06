@@ -42,14 +42,6 @@ To compile and run watching for modifications:
 ```bash
 npm run dev
 ```
-To test it:
-```bash
-npm test
-```
-To test it watching for modifications:
-```bash
-npm test:auto
-```
 
 ## Contributors
 Auro Mota <auro@blueorc.com>
