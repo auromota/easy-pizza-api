@@ -1,5 +1,6 @@
 import Validator from '../schema/Validator';
 import DrinkService from '../service/DrinkService';
+import ErrorUtils from '../error/errorUtils';
 
 export default class DrinkController {
 
@@ -8,8 +9,7 @@ export default class DrinkController {
             let service = new DrinkService();
             service.create(req, res, next);
         } else {
-            res.send(400);
-            next(false);
+            next(ErrorUtils.BadRequest);
         }
     }
 
@@ -18,8 +18,7 @@ export default class DrinkController {
             let service = new DrinkService();
             service.update(req, res, next);
         } else {
-            res.send(400);
-            next(false);
+            next(ErrorUtils.BadRequest);
         }
     }
 

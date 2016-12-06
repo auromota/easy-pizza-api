@@ -13,19 +13,16 @@ export default class LoginService {
     login(req, res, next) {
         this.dao.getUserByUsername(req.body.username, (err, user) => {
             if (err) {
-                res.json(401, err);
-                return next(false);
+                return next(err);
+            }
+            if (BCryptUtils.verify(req.body.password, user.password)) {
+                let token = JWTUtils.login(user);
+                res.status(200).json({
+                    token: token,
+                    user: user
+                });
             } else {
-                if (BCryptUtils.verify(req.body.password, user.password)) {
-                    let token = JWTUtils.login(user);
-                    res.json(200, {
-                        token: token,
-                        user: user
-                    });
-                    return next();
-                }
-                res.json(403, ErrorUtils.InvalidPassword);
-                return next(false);
+                next(ErrorUtils.InvalidPassword);
             }
         });
     }

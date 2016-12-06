@@ -1,6 +1,6 @@
-import * as Restify from 'restify';
 import Validator from '../schema/Validator';
 import UserService from '../service/UserService';
+import ErrorUtils from '../error/errorUtils';
 
 export default class UserController {
 
@@ -9,8 +9,7 @@ export default class UserController {
             let service = new UserService();
             service.create(req, res, next);
         } else {
-            res.send(400);
-            next(false);
+            next(ErrorUtils.BadRequest);
         }
     }
 }

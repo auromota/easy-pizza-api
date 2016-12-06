@@ -1,5 +1,6 @@
 import Validator from '../schema/Validator';
 import LoginService from '../service/LoginService';
+import ErrorUtils from '../error/errorUtils';
 
 export default class LoginController {
 
@@ -8,8 +9,7 @@ export default class LoginController {
             let service = new LoginService();
             service.login(req, res, next);
         } else {
-            res.send(400);
-            next(false);
+            next(ErrorUtils.BadRequest);
         }
     }
 

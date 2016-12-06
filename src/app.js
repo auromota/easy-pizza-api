@@ -1,26 +1,27 @@
-import restify from 'restify';
+import express from 'express';
 import dotenv from 'dotenv';
 import mongoose from 'mongoose';
 import Connection from './database/connection';
 import WebSocket from './ws/WebSocket';
 import Config from './config/config';
 import Router from './route/router';
+import cors from 'cors';
+import bodyParser from 'body-parser';
+import methodOverride from 'method-override';
+import errorHandler from './error/errorHandler';
 
 dotenv.config();
 
-let app = restify.createServer(Config);
+let app = express(Config);
 
 const ws = new WebSocket(app);
 
-restify.CORS.ALLOW_HEADERS.push('authorization');
-app.use(restify.CORS());
-app.pre(restify.pre.sanitizePath());
-app.use(restify.acceptParser(app.acceptable));
-app.use(restify.bodyParser());
-app.use(restify.queryParser());
-app.use(restify.fullResponse());
+app.use(cors());
+app.use(bodyParser.json());
 
 Router.applyRoutes(app);
+app.use(methodOverride());
+app.use(errorHandler);
 
 mongoose.connect(Connection.connection);
 

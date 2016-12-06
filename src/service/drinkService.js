@@ -13,11 +13,9 @@ export default class DrinkService {
         drink.price = req.body.price;
         this.dao.save(drink, (err, drink) => {
             if (err) {
-                res.json(400, err);
-                return next(false);
+                return next(err);
             }
-            res.json(200, drink);
-            return next();
+            res.status(200).json(drink);
         });
     }
 
@@ -28,11 +26,9 @@ export default class DrinkService {
         drink.price = req.body.price;
         this.dao.update(Drink, drink, (err, drink) => {
             if (err) {
-                res.json(400, err);
-                return next(false);
+                return next(err);
             }
-            res.json(200);
-            return next();
+            res.status(200).json(drink);
         });
     }
 

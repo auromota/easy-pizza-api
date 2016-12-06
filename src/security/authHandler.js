@@ -10,12 +10,9 @@ export default class AuthHandler {
 			if (AuthHandler.isTokenValid(token)) {
 				return next();
 			}
-			res.send(ErrorUtils.InvalidToken);
-			next(false);
-		} else {
-			res.send(ErrorUtils.NoTokenProvided);
-			next(false);
+			return next(ErrorUtils.InvalidToken);
 		}
+		return next(ErrorUtils.NoTokenProvided);
 	}
 
 	/**

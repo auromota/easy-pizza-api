@@ -1,4 +1,3 @@
-import * as Restify from 'restify';
 import UserDao from '../database/user/UserDao';
 import User from '../database/user/User';
 import BCryptUtils from '../security/BCryptUtils';
@@ -16,11 +15,9 @@ export class UserService {
         user.email = req.body.email;
         this.dao.save(user, (err, user) => {
             if (err) {
-                res.json(400, err);
-                return next(false);
+                return next(err);
             }
-            res.json(200, user);
-            return next();
+            res.status(200).json(user);
         });
     }
 

@@ -13,7 +13,7 @@ export default class Router {
         api.put('/api/drinks', AuthHandler.authorizeRequest, DrinkController.update);
         api.post('/api/toppings', AuthHandler.authorizeRequest, ToppingController.create);
         api.put('/api/toppings', AuthHandler.authorizeRequest, ToppingController.update);
-        api.del('/api/toppings', AuthHandler.authorizeRequest, ToppingController.remove);
+        api.delete('/api/toppings', AuthHandler.authorizeRequest, ToppingController.remove);
     }
 
 }

@@ -1,5 +1,6 @@
 import Validator from '../schema/validator';
 import ToppingService from '../service/ToppingService';
+import ErrorUtils from '../error/errorUtils';
 
 export default class ToppingController {
 
@@ -8,8 +9,7 @@ export default class ToppingController {
             let service = new ToppingService();
             service.create(req, res, next);
         } else {
-            res.send(400);
-            next(false);
+            next(ErrorUtils.BadRequest);
         }
     }
 
@@ -18,8 +18,7 @@ export default class ToppingController {
             let service = new ToppingService();
             service.update(req, res, next);
         } else {
-            res.send(400);
-            next(false);
+            next(ErrorUtils.BadRequest);
         }
     }
 
@@ -28,8 +27,7 @@ export default class ToppingController {
             let service = new ToppingService();
             service.remove(req, res, next);
         } else {
-            res.send(400);
-            next(false);
+            next(ErrorUtils.BadRequest);
         }
     }
 

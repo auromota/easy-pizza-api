@@ -14,4 +14,8 @@ export default class ErrorUtils {
         return new EasyPizzaError(403, 'Invalid password');
     }
 
+    static get BadRequest() {
+        return new EasyPizzaError(400, 'Bad request');
+    }
+
 }

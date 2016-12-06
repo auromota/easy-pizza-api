@@ -1,14 +1,12 @@
 import { Server as WebSocketServer } from 'ws';
-import { Server } from 'restify';
 import AuthHandler from '../security/AuthHandler';
-import * as Restify from 'restify';
 import Config from '../config/Config';
 
 export default class WebSocket {
 
     constructor(server) {
         this.ws = new WebSocketServer({
-            server: server.server,
+            server: server,
             verifyClient: this.acceptClient
         });
         this.defineWS();
