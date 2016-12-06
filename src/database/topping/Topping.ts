@@ -1,7 +1,7 @@
 import { Schema, Types, model } from 'mongoose';
-import { IDrink } from './IDrink';
+import { ITopping } from './ITopping';
 
-let drinkSchema = new Schema({
+let toppingSchema = new Schema({
     name: {
         type: String,
         required: true,
@@ -10,7 +10,11 @@ let drinkSchema = new Schema({
     price: {
         type: Number,
         required: true
+    },
+    photo: {
+        type: String,
+        required: false
     }
 });
 
-export let Drink = model<IDrink>('Drink', drinkSchema);
+export let Topping = model<ITopping>('Topping', toppingSchema);

@@ -63,4 +63,45 @@ export namespace Validator {
         });
         return validate(data);
     }
+
+    export function createTopping(data: any): boolean {
+        let validate = validator({
+            required: ['name', 'price'],
+            type: 'object',
+            properties: {
+                name: { type: 'string' },
+                price: { type: 'number' },
+                photo: { type: 'string' }
+            },
+            additionalProperties: false
+        });
+        return validate(data);
+    }
+
+    export function updateTopping(data: any): boolean {
+        let validate = validator({
+            required: ['id', 'name', 'price'],
+            type: 'object',
+            properties: {
+                id: { type: 'string' },
+                name: { type: 'string' },
+                price: { type: 'number' },
+                photo: { type: 'string' }
+            },
+            additionalProperties: false
+        });
+        return validate(data);
+    }
+
+    export function removeTopping(data: any): boolean {
+        let validate = validator({
+            required: ['id'],
+            type: 'object',
+            properties: {
+                id: { type: 'string' }
+            },
+            additionalProperties: false
+        });
+        return validate(data);
+    }
 }
