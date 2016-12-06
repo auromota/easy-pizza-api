@@ -14,8 +14,7 @@ export default class ToppingService {
         topping.photo = req.body.photo;
         this.dao.save(topping, (err, topping) => {
             if (err) {
-                res.status(400).json(err);
-                return next(false);
+                return next(err);
             }
             res.status(200).json(topping);
             return next();
@@ -30,8 +29,7 @@ export default class ToppingService {
         topping.photo = req.body.photo;
         this.dao.update(Topping, topping, (err, topping) => {
             if (err) {
-                res.status(400).json(err);
-                return next(false);
+                return next(err);
             }
             res.status(200).json(topping);
             return next();

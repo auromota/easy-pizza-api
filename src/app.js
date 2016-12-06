@@ -18,8 +18,7 @@ const ws = new WebSocket(app);
 
 app.use(cors());
 app.use(bodyParser.json());
-
-Router.applyRoutes(app);
+app.use(Router);
 app.use(methodOverride());
 app.use(errorHandler);
 
