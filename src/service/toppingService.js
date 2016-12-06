@@ -3,16 +3,12 @@ import Topping from '../database/topping/Topping';
 
 export default class ToppingService {
 
-    constructor() {
-        this.dao = new ToppingDao();
-    }
-
-    create(req, res, next) {
+    static create(req, res, next) {
         let topping = new Topping();
         topping.name = req.body.name;
         topping.price = req.body.price;
         topping.photo = req.body.photo;
-        this.dao.save(topping, (err, topping) => {
+        ToppingDao.save(topping, (err, topping) => {
             if (err) {
                 return next(err);
             }
@@ -21,13 +17,13 @@ export default class ToppingService {
         });
     }
 
-    update(req, res, next) {
+    static update(req, res, next) {
         let topping = new Topping();
         topping.name = req.body.name;
         topping._id = req.body.id;
         topping.price = req.body.price;
         topping.photo = req.body.photo;
-        this.dao.update(Topping, topping, (err, topping) => {
+        ToppingDao.update(Topping, topping, (err, topping) => {
             if (err) {
                 return next(err);
             }
@@ -36,8 +32,8 @@ export default class ToppingService {
         });
     }
 
-    remove(req, res, next) {
-        this.dao.remove(Topping, req.params.id, (err, item) => {
+    static remove(req, res, next) {
+        ToppingDao.remove(Topping, req.params.id, (err, item) => {
             if (err) {
                 return next(err);
             }
