@@ -1,13 +1,10 @@
 import { IUser } from './IUser';
 import { User } from './User';
+import { GenericDao } from '../generic/GenericDao';
 
-export class UserDao {
+export class UserDao extends GenericDao<IUser> {
 
-    public static save(user: IUser, callback: (err: any, user: IUser) => any): void {
-        user.save(callback);
-    }
-
-    public static getUserByUsername(username: string, callback: (err: any, user: IUser) => void): void {
+    public getUserByUsername(username: string, callback: (err: any, user: IUser) => void): void {
         User.findOne({ username: username }).exec(callback);
     }
 

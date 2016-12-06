@@ -6,7 +6,8 @@ export class LoginController {
 
     public static login(req: Restify.Request, res: Restify.Response, next: Restify.Next): void {
         if (Validator.loginPost(req.body)) {
-            LoginService.login(req, res, next);
+            let service = new LoginService();
+            service.login(req, res, next);
         } else {
             res.send(400);
             next(false);

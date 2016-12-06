@@ -6,7 +6,8 @@ export class DrinkController {
 
     public static create(req: Restify.Request, res: Restify.Response, next: Restify.Next): void {
         if (Validator.createDrink(req.body)) {
-            DrinkService.create(req, res, next);
+            let service = new DrinkService();
+            service.create(req, res, next);
         } else {
             res.send(400);
             next(false);
@@ -15,7 +16,8 @@ export class DrinkController {
 
     public static update(req: Restify.Request, res: Restify.Response, next: Restify.Next): void {
         if (Validator.updateDrink(req.body)) {
-            DrinkService.update(req, res, next);
+            let service = new DrinkService();
+            service.update(req, res, next);
         } else {
             res.send(400);
             next(false);

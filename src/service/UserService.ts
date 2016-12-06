@@ -6,12 +6,18 @@ import { BCryptUtils } from '../security/BCryptUtils';
 
 export class UserService {
 
-    public static create(req: Restify.Request, res: Restify.Response, next: Restify.Next): void {
+    private dao: UserDao;
+
+    constructor() {
+        this.dao = new UserDao();
+    }
+
+    public create(req: Restify.Request, res: Restify.Response, next: Restify.Next): void {
         let user = new User();
         user.username = req.body.username;
         user.password = BCryptUtils.crypt(req.body.password);
         user.email = req.body.email;
-        UserDao.save(user, (err: any, user: IUser) => {
+        this.dao.save(user, (err: any, user: IUser) => {
             if (err) {
                 res.json(400, err);
                 return next(false);

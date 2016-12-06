@@ -9,8 +9,14 @@ import { EasyPizzaErrorType } from '../error/EasyPizzaErrorType';
 
 export class LoginService {
 
-    public static login(req: Restify.Request, res: Restify.Response, next: Restify.Next): void {
-        UserDao.getUserByUsername(req.body.username, (err: any, user: IUser) => {
+    private dao: UserDao;
+
+    constructor() {
+        this.dao = new UserDao();
+    }
+
+    public login(req: Restify.Request, res: Restify.Response, next: Restify.Next): void {
+        this.dao.getUserByUsername(req.body.username, (err: any, user: IUser) => {
             if (err) {
                 res.json(401, err);
                 return next(false);

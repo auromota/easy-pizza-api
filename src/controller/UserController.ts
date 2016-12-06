@@ -6,7 +6,8 @@ export class UserController {
 
     public static create(req: Restify.Request, res: Restify.Response, next: Restify.Next): void {
         if (Validator.createUser(req.body)) {
-            UserService.create(req, res, next);
+            let service = new UserService();
+            service.create(req, res, next);
         } else {
             res.send(400);
             next(false);

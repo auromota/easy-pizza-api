@@ -5,11 +5,17 @@ import { IDrink } from '../database/drink/IDrink';
 
 export class DrinkService {
 
-    public static create(req: Restify.Request, res: Restify.Response, next: Restify.Next): void {
+    private dao: DrinkDao;
+
+    constructor() {
+        this.dao = new DrinkDao();
+    }
+
+    public create(req: Restify.Request, res: Restify.Response, next: Restify.Next): void {
         let drink = new Drink();
         drink.name = req.body.name;
         drink.price = req.body.price;
-        DrinkDao.save(drink, (err: any, drink: IDrink) => {
+        this.dao.save(drink, (err: any, drink: IDrink) => {
             if (err) {
                 res.json(400, err);
                 return next(false);
@@ -19,12 +25,12 @@ export class DrinkService {
         });
     }
 
-    public static update(req: Restify.Request, res: Restify.Response, next: Restify.Next): void {
+    public update(req: Restify.Request, res: Restify.Response, next: Restify.Next): void {
         let drink = new Drink();
         drink.name = req.body.name;
         drink._id = req.body.id;
         drink.price = req.body.price;
-        DrinkDao.update(drink, (err: any, drink: IDrink) => {
+        this.dao.update(Drink, drink, (err: any, drink: IDrink) => {
             if (err) {
                 res.json(400, err);
                 return next(false);
