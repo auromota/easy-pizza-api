@@ -42,3 +42,4 @@ app/**/*.map
 test/**/*.js
 test/**/*.map
 .env
+dist/

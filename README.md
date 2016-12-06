@@ -1,5 +1,5 @@
 # About this
-The API is being developed in NodeJS with Restify, MongoDB and TypeScript.
+The API is being developed in NodeJS with Restify and MongoDB.
 
 ## How to run
 After downloading or cloning the repository, you must install its dependencies:

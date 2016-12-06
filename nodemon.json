@@ -1,0 +1,7 @@
+{
+    "verbose": false,
+    "exec": "npm start",
+    "watch": [
+        "src/"
+    ]
+}

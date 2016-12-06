@@ -3,12 +3,12 @@
   "version": "1.0.0",
   "description": "",
   "main": "app/app.js",
+  "module": "module.js",
   "scripts": {
-    "test": "node_modules/.bin/_mocha --compilers tsx:ts-node/register --opts mocha.opts",
-    "test:auto": "node_modules/.bin/_mocha --compilers tsx:ts-node/register --opts mocha.opts --watch",
-    "compile": "node_modules/.bin/tsc",
-    "start": "npm run compile && node app/app.js",
-    "dev": "./node_modules/.bin/nodemon -e ts --exec \"npm start\""
+    "build": "npm run clean && babel src -s -D -d dist --presets es2015,stage-3",
+    "clean": "./node_modules/.bin/gulp clean",
+    "start": "npm run build && node dist/app.js",
+    "dev": "./node_modules/.bin/nodemon"
   },
   "repository": {
     "type": "git",
@@ -21,14 +21,7 @@
   },
   "homepage": "https://github.com/auromota/easy-pizza-api#readme",
   "dependencies": {
-    "@types/bcrypt-nodejs": "0.0.30",
-    "@types/dotenv": "^2.0.19",
-    "@types/is-my-json-valid": "0.0.19",
-    "@types/jsonwebtoken": "^7.1.33",
-    "@types/mongoose": "^4.6.1",
-    "@types/node": "^6.0.45",
-    "@types/restify": "^2.0.33",
-    "@types/ws": "0.0.37",
+    "babel-polyfill": "^6.16.0",
     "bcrypt-nodejs": "0.0.3",
     "dotenv": "^2.0.0",
     "is-my-json-valid": "^2.15.0",
@@ -39,13 +32,14 @@
     "ws": "^1.1.1"
   },
   "devDependencies": {
-    "@types/chai": "^3.4.34",
-    "@types/mocha": "^2.2.32",
-    "chai": "^3.5.0",
-    "mocha": "^3.1.2",
-    "nodemon": "^1.11.0",
-    "ts-node": "^1.7.0",
-    "tslint": "^3.15.1",
-    "typescript": "^2.0.3"
+    "babel-cli": "^6.18.0",
+    "babel-core": "^6.18.2",
+    "babel-eslint": "^7.1.1",
+    "babel-preset-es2015": "^6.18.0",
+    "babel-preset-stage-3": "^6.17.0",
+    "del": "^2.2.2",
+    "eslint": "^3.11.1",
+    "gulp": "^3.9.1",
+    "nodemon": "^1.11.0"
   }
 }
