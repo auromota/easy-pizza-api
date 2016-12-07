@@ -10,16 +10,19 @@ import cors from 'cors';
 import bodyParser from 'body-parser';
 import methodOverride from 'method-override';
 import errorHandler from './error/errorHandler';
+import passport from 'passport';
 
 let app = express();
 
 const ws = new WebSocket(app);
 
-app.use(cors());
 app.use(express.static(__dirname + '/public'));
+app.use(cors());
 app.use(bodyParser.json());
 app.use(getRouter());
 app.use(methodOverride());
+app.use(passport.initialize());
+app.use(passport.session());
 app.use(errorHandler);
 
 mongoose.connect(Connection.connection);
