@@ -13,11 +13,7 @@ function getRouter() {
 
     // Facebook authentication
     router.get('/auth/facebook', passport.authenticate('facebook', { scope: 'email' }));
-    router.get('/auth/facebook/callback', passport.authenticate('facebook', {
-        failureRedirect: '/'
-    }), (req, res) => {
-        res.redirect('/?acess_token=' + req.user.token);
-    });
+    router.get('/auth/facebook/callback', passport.authenticate('facebook', { failureRedirect: '/' }), LoginService.handleFacebook);
 
     // Admin authentication
     router.post('/api/auth/login', LoginService.login);
@@ -31,7 +27,7 @@ function getRouter() {
     router.delete('/api/toppings', AuthHandler.authorizeRequest, ToppingService.remove);
 
     // Client routes
-    router.put('/api/table', passport.authenticate('facebook'), TableService.setAvailability);
+    router.put('/api/table', AuthHandler.authorizeRequest, TableService.setAvailability);
 
     return router;
 }

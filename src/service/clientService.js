@@ -11,6 +11,7 @@ export default class ClientService {
             client.email = profile.emails[0].value;
             client.facebookId = profile.id;
             client.token = accessToken;
+            client.photo = 'https://graph.facebook.com/' + profile.id + '/picture?type=large';
             dao.save(client, (err, client) => {
                 if (err) {
                     return done(err);

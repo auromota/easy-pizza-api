@@ -18,6 +18,10 @@ let clientSchema = new mongoose.Schema({
     token: {
         type: String,
         required: true
+    },
+    photo: {
+        type: String,
+        requred: true
     }
 });
 
@@ -31,7 +35,7 @@ export class ClientDao extends GenericDao {
 
     save(client, callback) {
         let query = { facebookId: client.facebookId };
-        let update = { name: client.name, email: client.email, token: client.token };
+        let update = { name: client.name, email: client.email, token: client.token, photo: client.photo };
         let options = { upsert: true, new: true, setDefaultsOnInsert: true };
         Client.findOneAndUpdate(query, update, options, callback);
     }
