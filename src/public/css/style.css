@@ -30,7 +30,8 @@ body{
 }
 .control-label{
     font-family: 'Roboto', sans-serif;
-    font-size:14px;    
+    font-size:14px;
+    color: #000; 
 }
 .navbar-header{
     padding-left: 5px;
@@ -59,10 +60,6 @@ h1.title{
 
 .table-icon{
     height: 20px;
-}
-
-.control-label{
-    color: #FFF
 }
 
 .form-group{

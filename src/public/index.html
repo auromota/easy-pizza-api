@@ -15,7 +15,7 @@
     <link href="http://fontawesome.io/assets/font-awesome/css/font-awesome.css" rel="stylesheet">
 </head>
 
-<body>
+<body ng-controller="generalController">
     <div ui-view></div>
 
     <script src="/node_modules/jquery/dist/jquery.min.js"></script>
@@ -30,11 +30,13 @@
     <!--Services-->
     <script src="js/services/loginService.js"></script>
     <!--Controllers-->
+    <script src="js/controllers/generalController.js"></script>
     <script src="js/controllers/initController.js"></script>
     <script src="js/controllers/defineTableController.js"></script>
     <script src="js/controllers/clientAccessController.js"></script>
     <script src="js/controllers/clientDashboardController.js"></script>
     <script src="js/controllers/clientListMealController.js"></script>
+    <script src="js/controllers/adminAccessController.js"></script>
     <script src="js/controllers/adminDashboardController.js"></script>
     <script src="js/controllers/clientMenuController.js"></script>
     <script src="js/controllers/adminMenuController.js"></script>
