@@ -15,12 +15,12 @@ const loginPostValidator = validator({
 });
 
 const tableAvailabilityValidator = validator({
-    required: ['availability', 'num', 'clientId'],
+    required: ['availability', 'num', 'client'],
     type: 'object',
     properties: {
         num: { type: 'number' },
         availability: { type: 'boolean' },
-        clientId: { type: 'string' }
+        client: { type: 'string' }
     },
     additionalProperties: false
 });

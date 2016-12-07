@@ -11,7 +11,7 @@ export default class TableService {
             let table = new Table();
             table.num = req.body.num;
             table.availability = req.body.availability;
-            if (table.availability) {
+            if (!table.availability) {
                 table.client = req.body.client;
             }
             dao.updateAvailability(table, (err, table) => {
