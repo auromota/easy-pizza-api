@@ -60,3 +60,12 @@ h1.title{
 .table-icon{
     height: 20px;
 }
+
+.control-label{
+    color: #FFF
+}
+
+.form-group{
+    margin: 10px !important;
+    overflow: hidden
+}

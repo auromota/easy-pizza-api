@@ -1,5 +1,3 @@
-app.controller("initController",['$scope', function($scope){
-    
-    document.body.style.background = "#c0392b"
+app.controller("initController",['$scope', 'Login', function($scope, Login){
     
 }])

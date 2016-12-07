@@ -34,6 +34,16 @@ app.config(function($urlRouterProvider, $stateProvider){
             url: '/adminDashboard',
             controller: 'adminDashboardController',
             templateUrl: 'partials/_admin_dashboard.html'            
+        })
+        .state('toppings', {
+            url: '/toppings',
+            controller: 'toppingsController',
+            templateUrl: 'partials/_toppings.html'
+        })
+        .state('newTopping', {
+            url: '/newTopping',
+            controller: 'newToppingController',
+            templateUrl: 'partials/_new_topping.html'
         });
     
 })

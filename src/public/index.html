@@ -37,10 +37,10 @@
                         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                             <ul class="nav navbar-nav">
                                 <li class="active">
-                                    <a ui-sref="{adminDashboard}"><img src="images/table-icon.png" class="table-icon"> Mesas <span class="sr-only">(current)</span></a>
+                                    <a ui-sref="adminDashboard"><img src="images/table-icon.png" class="table-icon"> Mesas <span class="sr-only">(current)</span></a>
                                 </li>
-                                <li><a href="#">Bebidas</a></li>
-                                <li><a href="#">Another action</a></li>
+                                <li><a ui-sref="adminBebidas">Bebidas</a></li>
+                                <li><a ui-sref="toppings">Ingredientes</a></li>
                                 <li><a href="#">Something else here</a></li>
                                 <li role="separator" class="divider"></li>
                                 <li><a href="#">Separated link</a></li>
@@ -74,6 +74,10 @@
     <script src="/node_modules/angular-ui-router/release/angular-ui-router.min.js"></script>
     <!-- App -->
     <script src="js/app.js"></script>
+    <!--Factories-->
+    <script src="js/factories/toppingFactory.js"></script>
+    <!--Services-->
+    <script src="js/services/loginService.js"></script>
     <!--Controllers-->
     <script src="js/controllers/initController.js"></script>
     <script src="js/controllers/defineTableController.js"></script>
@@ -83,9 +87,9 @@
     <script src="js/controllers/adminDashboardController.js"></script>
     <script src="js/controllers/clientMenuController.js"></script>
     <script src="js/controllers/adminMenuController.js"></script>
+    <script src="js/controllers/toppingsController.js"></script>
+    <script src="js/controllers/newToppingController.js"></script>
 
-    <!--directives-->
-    <script src="js/directives/showClientMenu.js"></script>
 </body>
 
 </html>
