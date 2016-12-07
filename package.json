@@ -8,7 +8,8 @@
     "build": "npm run clean && babel src -s -D -d dist --presets es2015,stage-3",
     "clean": "./node_modules/.bin/gulp clean",
     "start": "npm run build && node dist/app.js",
-    "dev": "./node_modules/.bin/nodemon"
+    "dev": "./node_modules/.bin/nodemon",
+    "deploy": "npm run build && forever start dist/app.js"
   },
   "repository": {
     "type": "git",
