@@ -27,14 +27,14 @@ function getRouter() {
     // Toppings
     router.get('/api/toppings', AuthHandler.authorizeRequest, ToppingService.find);
     router.post('/api/toppings', AuthHandler.authorizeRequest, ToppingService.create);
-    router.put('/api/toppings', AuthHandler.authorizeRequest, ToppingService.update);
-    router.delete('/api/toppings', AuthHandler.authorizeRequest, ToppingService.remove);
+    router.put('/api/toppings/:id', AuthHandler.authorizeRequest, ToppingService.update);
+    router.delete('/api/toppings/:id', AuthHandler.authorizeRequest, ToppingService.remove);
 
     // Pizzas
     router.get('/api/pizzas', AuthHandler.authorizeRequest, PizzaService.find);
     router.post('/api/pizzas', AuthHandler.authorizeRequest, PizzaService.create);
-    router.put('/api/pizzas', AuthHandler.authorizeRequest, PizzaService.update);
-    router.delete('/api/pizzas', AuthHandler.authorizeRequest, PizzaService.remove);
+    router.put('/api/pizzas/:id', AuthHandler.authorizeRequest, PizzaService.update);
+    router.delete('/api/pizzas/:id', AuthHandler.authorizeRequest, PizzaService.remove);
 
     // Orders
     router.post('/api/orders', AuthHandler.authorizeRequest, OrderService.openOrder);

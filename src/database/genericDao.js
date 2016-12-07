@@ -4,6 +4,10 @@ export default class GenericDao {
         this.model = model;
     }
 
+    findById(id, callback) {
+        this.model.findById(id, callback);
+    }
+
     /**
      * This callback is called to handle the response.
      * 

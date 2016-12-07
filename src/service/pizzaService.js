@@ -28,7 +28,7 @@ export default class PizzaService {
 
     static update(req, res, next) {
         let pizza = new Pizza();
-        pizza._id = req.body.id;
+        pizza._id = req.params.id;
         pizza.name = req.body.name;
         pizza.toppings = req.body.toppings;
         pizza.custom = req.body.custom;
@@ -41,7 +41,7 @@ export default class PizzaService {
     }
 
     static remove(req, res, next) {
-        dao.remove(req.query.id, (err, pizza) => {
+        dao.remove(req.params.id, (err, pizza) => {
             if (err) {
                 return next(err);
             }

@@ -29,7 +29,7 @@ export default class ToppingService {
     static update(req, res, next) {
         let topping = new Topping();
         topping.name = req.body.name;
-        topping._id = req.body.id;
+        topping._id = req.params.id;
         topping.price = req.body.price;
         topping.photo = req.body.photo;
         dao.update(topping, (err, topping) => {
@@ -41,11 +41,11 @@ export default class ToppingService {
     }
 
     static remove(req, res, next) {
-        dao.remove(req.query.id, (err, item) => {
+        dao.remove(req.params.id, (err, topping) => {
             if (err) {
                 return next(err);
             }
-            res.status(200);
+            res.status(200).json(topping);
         });
     }
 
