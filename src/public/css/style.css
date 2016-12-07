@@ -1,0 +1,62 @@
+body{
+    background: #c0392b
+}
+.vertical-center {
+  min-height: 100%;  /* Fallback for browsers do NOT support vh unit */
+  min-height: 100vh; /* These two lines are counted as one :-)       */
+  display: flex;
+  align-items: center;
+}
+.logo-container hr{
+    margin: 10px
+}
+
+.logo-container h2{
+    font-family: 'Roboto', sans-serif;
+    color: #FFF;
+}
+
+.logo-container .logo{
+    font-size: 42px;
+    font-family: 'Coiny', cursive;
+    color: #FFF;
+    padding: 0px;
+    margin: 0px;
+}
+.logo-container small {
+    font-family: 'Roboto', sans-serif;
+    font-size:14px;
+    color: #FFF;
+}
+.control-label{
+    font-family: 'Roboto', sans-serif;
+    font-size:14px;    
+}
+.navbar-header{
+    padding-left: 5px;
+    padding-right: 15px;
+}
+.navbar-brand{
+    color: #FFF !important;
+    font-family: 'Coiny', cursive;
+    font-size: 28px;
+}
+.brand-image{
+    width: 50px;
+    margin-top: 3px; 
+}
+h1.title{
+    font-family: 'Roboto';
+    font-size: 32px;
+    color: #FFF;
+}
+
+.title2{
+    font-family: 'Roboto';
+    font-size: 18px;
+    color: #FFF;
+}
+
+.table-icon{
+    height: 20px;
+}

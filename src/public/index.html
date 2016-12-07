@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Easy Pizza</title>
+
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="css/style.css">
+
+    <link href="https://fonts.googleapis.com/css?family=Coiny" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <link href="http://fontawesome.io/assets/font-awesome/css/font-awesome.css" rel="stylesheet">
+</head>
+
+<body>
+    <div id="menu-client" ng-controller="clientMenuController">
+        <div class="container-fluid" ng-if="true" showClientMenu>
+
+        </div>
+    </div>
+
+
+    <div id="menu-admin" ng-controller="adminMenuController">
+        <div class="container-fluid" ng-show="showMenu" ng-cloak id="container-menu-admin">
+            <div class="row">
+                <nav class="navbar navbar-inverse">
+                    <div class="container">
+                        <!-- Brand and toggle get grouped for better mobile display -->
+                        <div class="navbar-header">
+                            <img alt="Brand" class="brand-image" src="images/pizza-slice.png">
+                            <a href="" class="navbar-brand">EasyPizza</a>
+                        </div>
+
+                        <!-- Collect the nav links, forms, and other content for toggling -->
+                        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                            <ul class="nav navbar-nav">
+                                <li class="active">
+                                    <a ui-sref="{adminDashboard}"><img src="images/table-icon.png" class="table-icon"> Mesas <span class="sr-only">(current)</span></a>
+                                </li>
+                                <li><a href="#">Bebidas</a></li>
+                                <li><a href="#">Another action</a></li>
+                                <li><a href="#">Something else here</a></li>
+                                <li role="separator" class="divider"></li>
+                                <li><a href="#">Separated link</a></li>
+                                <li role="separator" class="divider"></li>
+                                <li><a href="#">One more separated link</a></li>
+                            </ul>
+
+                            <ul class="nav navbar-nav navbar-right">
+                                <li>
+                                    <a href="#">
+                                        <img src="images/pizza-slice.png" style="width:20px"> _Sair
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                        <!-- /.navbar-collapse -->
+                    </div>
+                    <!-- /.container-fluid -->
+                </nav>
+            </div>
+        </div>
+    </div>
+
+
+    <div ui-view></div>
+
+    <script src="js/jquery-3.1.1.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="/node_modules/angular/angular.min.js"></script>
+    <script src="/node_modules/angular-resource/angular-resource.min.js"></script>
+    <script src="/node_modules/angular-ui-router/release/angular-ui-router.min.js"></script>
+    <!-- App -->
+    <script src="js/app.js"></script>
+    <!--Controllers-->
+    <script src="js/controllers/initController.js"></script>
+    <script src="js/controllers/defineTableController.js"></script>
+    <script src="js/controllers/clientAccessController.js"></script>
+    <script src="js/controllers/clientDashboardController.js"></script>
+    <script src="js/controllers/clientListMealController.js"></script>
+    <script src="js/controllers/adminDashboardController.js"></script>
+    <script src="js/controllers/clientMenuController.js"></script>
+    <script src="js/controllers/adminMenuController.js"></script>
+
+    <!--directives-->
+    <script src="js/directives/showClientMenu.js"></script>
+</body>
+
+</html>

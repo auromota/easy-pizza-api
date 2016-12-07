@@ -4,15 +4,38 @@ import DrinkService from '../service/DrinkService';
 import ToppingService from '../service/ToppingService';
 import UserService from '../service/UserService';
 import LoginService from '../service/LoginService';
+import passport from 'passport';
+import Facebook from 'passport-facebook';
 
 const router = express.Router();
 
-router.post('/api/login', LoginService.login);
-router.post('/api/users', UserService.create);
-router.post('/api/drinks', AuthHandler.authorizeRequest, DrinkService.create);
-router.put('/api/drinks', AuthHandler.authorizeRequest, DrinkService.update);
-router.post('/api/toppings', AuthHandler.authorizeRequest, ToppingService.create);
-router.put('/api/toppings', AuthHandler.authorizeRequest, ToppingService.update);
-router.delete('/api/toppings', AuthHandler.authorizeRequest, ToppingService.remove);
+function getRouter() {
+    passport.use(new Facebook.Strategy(
+        {
+            clientID: process.env.FACEBOOK_ID,
+            clientSecret: process.env.FACEBOOK_SECRET,
+            callbackURL: 'http://localhost:8080/auth/facebook/callback'
+        },
+        (accessToken, refreshToken, profile, done) => {
+            console.log('Access token: ' + accessToken);
+            console.log('Refresh token: ' + refreshToken);
+            console.log('Profile: ' + profile);
+        }
+    ));
 
-export default router;
+    router.get('/auth/facebook', passport.authenticate('facebook', { scope: 'email' }));
+    router.get('/auth/facebook/callback', passport.authenticate('facebook', {
+        successRedirect: '/',
+        failureRedirect: '/login'
+    }));
+    router.post('/api/auth/login', LoginService.login);
+    router.post('/api/users', UserService.create);
+    router.post('/api/drinks', AuthHandler.authorizeRequest, DrinkService.create);
+    router.put('/api/drinks', AuthHandler.authorizeRequest, DrinkService.update);
+    router.post('/api/toppings', AuthHandler.authorizeRequest, ToppingService.create);
+    router.put('/api/toppings', AuthHandler.authorizeRequest, ToppingService.update);
+    router.delete('/api/toppings', AuthHandler.authorizeRequest, ToppingService.remove);
+    return router;
+}
+
+export default getRouter;

@@ -1,24 +1,24 @@
+require('dotenv').config();
+
 import express from 'express';
-import dotenv from 'dotenv';
 import mongoose from 'mongoose';
 import Connection from './database/connection';
-import WebSocket from './ws/WebSocket';
+import WebSocket from './ws/webSocket';
 import Config from './config/config';
-import Router from './route/router';
+import getRouter from './route/router';
 import cors from 'cors';
 import bodyParser from 'body-parser';
 import methodOverride from 'method-override';
 import errorHandler from './error/errorHandler';
 
-dotenv.config();
-
-let app = express(Config);
+let app = express();
 
 const ws = new WebSocket(app);
 
 app.use(cors());
+app.use(express.static(__dirname + '/public'));
 app.use(bodyParser.json());
-app.use(Router);
+app.use(getRouter());
 app.use(methodOverride());
 app.use(errorHandler);
 

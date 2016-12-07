@@ -18,6 +18,8 @@ Then you must set some environment variables:
 | MONGODB_PORT | port to access your mongoDB instance|
 | MONGODB_DATABASE | name of your mongoDB instance|
 | JWT_PASS | secret password to be used by JWT |
+| FACEBOOK_ID | your app's facebook ID |
+| FACEBOOK_SECRET | your app's facebook secret |
 
 To make it easier, you can just create a file named `.env` in the root of the project and add the attributes. [Dotenv](https://github.com/motdotla/dotenv) will take care of that:
 

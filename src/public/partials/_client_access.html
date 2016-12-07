@@ -1,0 +1,106 @@
+<div id="fb-root"></div>
+<script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '187294105060976',
+      xfbml      : true,
+      version    : 'v2.6'
+    });
+  };
+
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "//connect.facebook.net/en_US/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+
+   
+    FB.getLoginStatus(function(response) {
+        statusChangeCallback(response);
+        console.log(response)
+    });
+
+    FB.api('/me', function(response) {
+        console.log(JSON.stringify(response));
+    });
+
+    // function login(){
+    //     FB.login(function(response) {
+    //         // handle the response
+    //         console.log("Response goes here!");
+    //         console.log(response)
+    //     }, { scope: 'email,user_photos,public_profile' });                    
+    // }
+
+    function Login() {
+    FB.login(function (response) {
+        if (response.authResponse) {
+        FB.api('/me', function (response) {
+            console.log(response)
+            document.getElementById("displayName").innerHTML = response.name;
+            document.getElementById("userName").innerHTML = response.username;
+            document.getElementById("userID").innerHTML = response.id;
+            document.getElementById("userEmail").innerHTML = response.email;
+            FB.api('/me/picture?type=normal', function (response) {
+            document.getElementById("profileImage").setAttribute("src", response.data.url);
+            });
+        });
+        } else {
+        alert("Login attempt failed!");
+        }
+    }, { scope: 'email,user_photos,publish_actions,public_profile' });
+    }
+
+
+    function logout() {
+        FB.logout(function(response) {
+            // user is now logged out
+        });
+    }    
+</script>
+<div class="container vertical-center">
+    <div class="col-sm-6 col-md-6 col-mg-6 col-sm-offset-3 col-md-offset-3 col-lg-offset-3">
+        <div class="row text-center logo-container">
+            <div class="col-sm-offset-1 col-md-offset-1 col-lg-offset-1 col-sm-10 col-md-10 col-lg-10">
+                <h2>Faça login e comece a fazer seus pedidos</h2>
+            </div>
+            <div class="clearfix"></div>
+            <hr>
+        </div>
+        <div class="col-sm-10 col-md-10 col-lg-10 col-sm-offset-1 col-lg-offset-1 col-md-offset-1">
+            <div class="row">
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <form action="" class="form-horizontal">
+                            <div class="form-group">
+                                <label for="" class="col-sm-2 col-md-2 col-lg-2 control-label">User: </label>
+                                <div class="col-md-10 col-sm-10 col-lg-10">
+                                    <input type="email" class="form-control">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="" class="col-sm-2 col-md-2 col-lg-2 control-label">Password: </label>
+                                <div class="col-md-10 col-sm-10 col-lg-10">
+                                    <input type="email" class="form-control">
+                                </div>
+                            </div>
+                            <div class="form-group text-center">
+                                <!--<div class="fb-login-button" data-max-rows="3" data-size="large" data-show-faces="false" data-auto-logout-link="false"></div>-->
+                                <button class="btn btn-default" onclick="Login()">Entrar</button>
+                                <button class="btn btn-danger" onclick="logout()">Sair</button>
+                            </div>
+                        </form>
+                        <hr>
+                        <div id="displayName"></div>
+                        <div id="userName"></div>
+                        <div id="userID"></div>
+                        <div id="userEmail"></div>
+                        <div id="profileImage"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
