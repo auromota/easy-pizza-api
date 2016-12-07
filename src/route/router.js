@@ -27,7 +27,8 @@ function getRouter() {
     router.delete('/api/toppings', AuthHandler.authorizeRequest, ToppingService.remove);
 
     // Client routes
-    router.put('/api/table', AuthHandler.authorizeRequest, TableService.setAvailability);
+    router.put('/api/tables', AuthHandler.authorizeRequest, TableService.setAvailability);
+    router.get('/api/tables', AuthHandler.authorizeRequest, TableService.find);
 
     return router;
 }

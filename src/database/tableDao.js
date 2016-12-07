@@ -12,8 +12,8 @@ let tableSchema = new mongoose.Schema({
         required: true
     },
     client: {
-        type: mongoose.Schema.ObjectId,
-        ref: 'User'
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Client'
     }
 });;
 
@@ -25,9 +25,8 @@ export class TableDao extends GenericDao {
         super(Table);
     }
 
-    findAvailableTables(callback) {
-        let query = { availability: true };
-        Table.find(query, callback);
+    findPopulated(callback) {
+        Table.find().populate('client').exec(callback);
     }
 
     updateAvailability(table, callback) {
