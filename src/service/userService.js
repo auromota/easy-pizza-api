@@ -1,4 +1,4 @@
-import { User, UserDao } from '../database/user/userDao';
+import { User, UserDao } from '../database/userDao';
 import BCryptUtils from '../security/bcryptUtils';
 
 const dao = new UserDao();

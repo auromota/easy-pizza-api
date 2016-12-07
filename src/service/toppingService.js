@@ -1,4 +1,4 @@
-import {ToppingDao, Topping} from '../database/topping/toppingDao';
+import {ToppingDao, Topping} from '../database/toppingDao';
 
 const dao = new ToppingDao();
 

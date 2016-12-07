@@ -1,5 +1,6 @@
 import express from 'express';
 import AuthHandler from '../security/authHandler';
+import { facebookHandler, getFacebookConfig } from '../security/facebookHandler';
 import DrinkService from '../service/drinkService';
 import ToppingService from '../service/toppingService';
 import UserService from '../service/userService';
@@ -10,24 +11,15 @@ import Facebook from 'passport-facebook';
 const router = express.Router();
 
 function getRouter() {
-    passport.use(new Facebook.Strategy(
-        {
-            clientID: process.env.FACEBOOK_ID,
-            clientSecret: process.env.FACEBOOK_SECRET,
-            callbackURL: process.env.FACEBOOK_CALLBACK
-        },
-        (accessToken, refreshToken, profile, done) => {
-            console.log('Access token: ' + accessToken);
-            console.log('Refresh token: ' + refreshToken);
-            console.log('Profile: ' + profile);
-        }
-    ));
+
+    passport.use(new Facebook.Strategy(getFacebookConfig(), facebookHandler));
 
     router.get('/auth/facebook', passport.authenticate('facebook', { scope: 'email' }));
     router.get('/auth/facebook/callback', passport.authenticate('facebook', {
         successRedirect: '/',
         failureRedirect: '/login'
     }));
+
     router.post('/api/auth/login', LoginService.login);
     router.post('/api/users', UserService.create);
     router.post('/api/drinks', AuthHandler.authorizeRequest, DrinkService.create);

@@ -1,5 +1,5 @@
 import mongoose from 'mongoose';
-import GenericDao from '../generic/genericDao';
+import GenericDao from './genericDao';
 
 let toppingSchema = new mongoose.Schema({
     name: {

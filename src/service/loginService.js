@@ -1,4 +1,4 @@
-import { User, UserDao } from '../database/user/userDao';
+import { User, UserDao } from '../database/userDao';
 import JWTUtils from '../security/jwtUtils';
 import BCryptUtils from '../security/bcryptUtils';
 import ErrorUtils from '../error/errorUtils';
