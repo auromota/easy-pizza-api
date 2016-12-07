@@ -12,8 +12,6 @@ export default class ClientService {
         client.facebookId = profile.id;
         client.accessToken = accessToken;
         dao.save(client, (err, client) => {
-            console.log(err);
-            console.log(client);
             if (err) {
                 return done(err);
             }

@@ -33,7 +33,7 @@ export class ClientDao extends GenericDao {
         let query = { facebookId: client.facebookId };
         let update = { name: client.name, email: client.email, accessToken: client.accessToken };
         let options = { upsert: true, new: true, setDefaultsOnInsert: true };
-        Client.findOneAndUpdate(query, client, options, callback);
+        Client.findOneAndUpdate(query, update, options, callback);
     }
 
 }

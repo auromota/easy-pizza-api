@@ -19,10 +19,10 @@ const ws = new WebSocket(app);
 app.use(express.static(__dirname + '/public'));
 app.use(cors());
 app.use(bodyParser.json());
-app.use(getRouter());
-app.use(methodOverride());
 app.use(passport.initialize());
 app.use(passport.session());
+app.use(getRouter());
+app.use(methodOverride());
 app.use(errorHandler);
 
 mongoose.connect(Connection.connection);
