@@ -7,7 +7,9 @@ export default class AuthHandler {
 	static authorizeRequest(req, res, next) {
 		let token = AuthHandler.getToken(req.headers);
 		if (token) {
-			if (AuthHandler.isTokenValid(token)) {
+			let decoded = AuthHandler.decodeToken(token);
+			if (decoded) {
+				req.user = decoded;
 				return next();
 			}
 			return next(ErrorUtils.InvalidToken);
@@ -18,9 +20,9 @@ export default class AuthHandler {
 	/**
 	 * Validates a token using JWT.
 	 * 
-	 * @return true if token is valid
+	 * @return decoded payload
 	 */
-	static isTokenValid(token) {
+	static decodeToken(token) {
 		return jwt.verify(token, process.env.JWT_PASS);
 	}
 

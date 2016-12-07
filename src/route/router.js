@@ -5,7 +5,7 @@ import ToppingService from '../service/toppingService';
 import PizzaService from '../service/pizzaService';
 import UserService from '../service/userService';
 import LoginService from '../service/loginService';
-import TableService from '../service/tableService';
+import OrderService from '../service/orderService';
 import passport from 'passport';
 
 const router = express.Router();
@@ -36,9 +36,10 @@ function getRouter() {
     router.put('/api/pizzas', AuthHandler.authorizeRequest, PizzaService.update);
     router.delete('/api/pizzas', AuthHandler.authorizeRequest, PizzaService.remove);
 
-    // Tables
-    router.put('/api/tables', AuthHandler.authorizeRequest, TableService.setAvailability);
-    router.get('/api/tables', AuthHandler.authorizeRequest, TableService.find);
+    // Orders
+    router.post('/api/orders', AuthHandler.authorizeRequest, OrderService.openOrder);
+    router.post('/api/orders/:id/pizzas', AuthHandler.authorizeRequest, OrderService.orderPizza);
+    router.post('/api/orders/:id/drinks', AuthHandler.authorizeRequest, OrderService.orderDrink);
 
     return router;
 }

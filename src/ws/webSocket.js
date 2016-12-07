@@ -15,7 +15,7 @@ export default class WebSocket {
     acceptClient(info, callback) {
         if (Config.env === 'production') {
             let token = AuthHandler.getToken(info.req.headers);
-            if (token && AuthHandler.isTokenValid(info.req.headers)) {
+            if (token && AuthHandler.decodeToken(info.req.headers)) {
                 callback(true);
             }
             callback(false, 403, 'Forbidden');

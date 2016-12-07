@@ -30,7 +30,12 @@ export default class LoginService {
     }
 
     static handleFacebook(req, res, next) {
-        let token = JWTUtils.login({ clientId: req.user.clientId, token: req.user.token });
+        let payload = {
+            client: req.user._id,
+            token: req.user.token,
+            facebookId: req.user.facebookId
+        };
+        let token = JWTUtils.login(payload);
         res.redirect('/?token=' + token);
     }
 

@@ -1,29 +1,27 @@
 import { Table, TableDao } from '../database/tableDao';
-import Validator from '../security/Validator';
-import ErrorUtils from '../error/errorUtils';
 import * as _ from 'lodash';
 
 const dao = new TableDao();
 
 export default class TableService {
 
-    static setAvailability(req, res, next) {
-        if (Validator.tableAvailability(req.body)) {
-            let table = new Table();
-            table.num = req.body.num;
-            table.availability = req.body.availability;
-            if (!table.availability) {
-                table.client = req.body.client;
-            }
-            dao.updateAvailability(table, (err, table) => {
-                if (err) {
-                    return next(err);
-                }
-                res.status(200).json(table);
-            });
-        } else {
-            next(ErrorUtils.BadRequest);
+    /**
+     * Set a new status to the table.
+     * Depending on the availability, it will also set the client in the table.
+     * 
+     * @param {string} id 
+     * @param {boolean} availability
+     * @param {string} client
+     * @param {callback} callback
+     */
+    static setAvailability(id, availability, client, callback) {
+        let table = new Table();
+        table._id = id;
+        table.availability = availability;
+        if (!table.availability) {
+            table.client = client;
         }
+        dao.updateAvailability(table, callback);
     }
 
     static find(req, res, next) {

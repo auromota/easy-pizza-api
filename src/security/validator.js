@@ -14,13 +14,29 @@ const loginPostValidator = validator({
     additionalProperties: false
 });
 
-const tableAvailabilityValidator = validator({
-    required: ['availability', 'num', 'client'],
+const openOrderValidator = validator({
+    required: ['table'],
     type: 'object',
     properties: {
-        num: { type: 'number' },
-        availability: { type: 'boolean' },
-        client: { type: 'string' }
+        table: { type: 'string' }
+    },
+    additionalProperties: false
+});
+
+const orderPizzaValidator = validator({
+    required: ['pizza'],
+    type: 'object',
+    properties: {
+        pizza: { type: 'string' }
+    },
+    additionalProperties: false
+});
+
+const orderDrinkValidator = validator({
+    required: ['drink'],
+    type: 'object',
+    properties: {
+        drink: { type: 'string' }
     },
     additionalProperties: false
 });
@@ -29,8 +45,14 @@ const Validator = {
     loginPost(data) {
         return loginPostValidator(data);
     },
-    tableAvailability(data) {
-        return tableAvailabilityValidator(data);
+    openOrder(data) {
+        return openOrderValidator(data);
+    },
+    orderPizza(data) {
+        return orderPizzaValidator(data);
+    },
+    orderDrink(data) {
+        return orderDrinkValidator(data);
     }
 };
 

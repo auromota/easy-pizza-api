@@ -32,10 +32,9 @@ export class TableDao extends GenericDao {
     }
 
     updateAvailability(table, callback) {
-        let query = { num: table.num };
         let update = { availability: table.availability, client: table.client };
         let options = { new: true };
-        Table.findOneAndUpdate(query, update, options, callback);
+        Table.findByIdAndUpdate(table._id, update, options, callback);
     }
 
 }
