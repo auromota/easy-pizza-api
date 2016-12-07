@@ -1,8 +1,8 @@
 import { User, UserDao } from '../database/userDao';
 import JWTUtils from '../security/jwtUtils';
 import BCryptUtils from '../security/bcryptUtils';
+import Validator from '../security/validator';
 import ErrorUtils from '../error/errorUtils';
-import Validator from '../schema/validator';
 
 const dao = new UserDao();
 
@@ -27,6 +27,11 @@ export default class LoginService {
         } else {
             next(ErrorUtils.BadRequest);
         }
+    }
+
+    static handleFacebook(req, res, next) {
+        let token = JWTUtils.login({ clientId: req.user.clientId, token: req.user.token });
+        res.redirect('/?token=' + token);
     }
 
 }

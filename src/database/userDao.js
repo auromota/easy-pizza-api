@@ -27,7 +27,6 @@ export class UserDao extends GenericDao {
     }
 
     findUserByUsername(username, callback) {
-        console.log(1);
         User.findOne({ username: username }).exec(callback);
     }
 

@@ -10,11 +10,14 @@ import cors from 'cors';
 import bodyParser from 'body-parser';
 import methodOverride from 'method-override';
 import errorHandler from './error/errorHandler';
+import configPassport from './security/passport';
 import passport from 'passport';
 
-let app = express();
+const app = express();
 
 const ws = new WebSocket(app);
+
+configPassport(passport);
 
 app.use(express.static(__dirname + '/public'));
 app.use(cors());
