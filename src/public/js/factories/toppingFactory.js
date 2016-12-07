@@ -1,3 +1,3 @@
-app.factory('Topping', function ($resource) {
-    return $resource('./api/toppings/:id'); // Note the full endpoint address
-});
+app.factory('Topping', ['$resource', function ($resource) {
+    return $resource('./api/toppings/:id');
+}]);

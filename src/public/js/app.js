@@ -1,14 +1,28 @@
-var app = angular.module("app",['ui.router', 'ngResource']);
+var app = angular.module("app", ['ui.router', 'ngResource']);
 
-app.config(function($urlRouterProvider, $stateProvider){
-    
+app.config(['$urlRouterProvider', '$stateProvider', '$locationProvider', function ($urlRouterProvider, $stateProvider, $locationProvider) {
+
     $urlRouterProvider.otherwise('/');
-    
+    // $locationProvider.html5Mode({
+    //     enabled: true,
+    //     requireBase: false
+    // });
+
     $stateProvider
-        .state('/', {
+        .state('init', {
             url: '/',
             controller: 'initController',
             templateUrl: 'partials/_init.html'
+        })
+        .state('login', {
+            abstract: true,
+            url: '/login',
+            templateUrl: 'partials/_login.html'
+        })
+        .state('login.client', {
+            url: '/client',
+            controller: 'clientAccessController',
+            templateUrl: 'partials/_client_access.html'
         })
         .state('defineTable', {
             url: '/defineTable',
@@ -25,7 +39,7 @@ app.config(function($urlRouterProvider, $stateProvider){
             controller: 'clientDashboardController',
             templateUrl: 'partials/_client_dashboard.html'
         })
-        .state('clientListMeal',{
+        .state('clientListMeal', {
             url: '/clientListMeal',
             controller: 'clientListMealController',
             templateUrl: 'partials/_client_list_meal.html'
@@ -33,7 +47,7 @@ app.config(function($urlRouterProvider, $stateProvider){
         .state('adminDashboard', {
             url: '/adminDashboard',
             controller: 'adminDashboardController',
-            templateUrl: 'partials/_admin_dashboard.html'            
+            templateUrl: 'partials/_admin_dashboard.html'
         })
         .state('toppings', {
             url: '/toppings',
@@ -45,5 +59,5 @@ app.config(function($urlRouterProvider, $stateProvider){
             controller: 'newToppingController',
             templateUrl: 'partials/_new_topping.html'
         });
-    
-})
+
+}]);

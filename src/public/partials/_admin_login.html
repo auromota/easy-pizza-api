@@ -1,0 +1,24 @@
+<div class="col-sm-10 col-md-10 col-lg-10 col-sm-offset-1 col-lg-offset-1 col-md-offset-1">
+    <div class="row">
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <div class="form-group">
+                    <label for="" class="col-sm-2 col-md-2 col-lg-2 control-label">User: </label>
+                    <div class="col-md-10 col-sm-10 col-lg-10">
+                        <input type="text" class="form-control" ng-model="user.email">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="" class="col-sm-2 col-md-2 col-lg-2 control-label">Password: </label>
+                    <div class="col-md-10 col-sm-10 col-lg-10">
+                        <input type="password" class="form-control" ng-model="user.password">
+                    </div>
+                </div>
+                <div class="form-group text-center">
+                    <button class="btn btn-primary" type="button" ng-click="login(user)">Log in</button>
+                    <input type="text" class="btn-danger btn" value="Cancel">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
