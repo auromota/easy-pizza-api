@@ -5,12 +5,12 @@ app.config(function($urlRouterProvider, $stateProvider){
     $urlRouterProvider.otherwise('/');
     
     $stateProvider
-        .state("/", {
+        .state('/', {
             url: '/',
             controller: 'initController',
             templateUrl: 'partials/_init.html'
         })
-        .state("defineTable", {
+        .state('defineTable', {
             url: '/defineTable',
             controller: 'defineTableController',
             templateUrl: 'partials/_define_table.html'

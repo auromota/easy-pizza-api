@@ -1,3 +1,3 @@
-app.controller('toppingsController',['$scope', function($scope){
-    
+app.controller('toppingsController', ['$scope', function ($scope) {
+
 }]);
