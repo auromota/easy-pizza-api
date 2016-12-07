@@ -1,15 +1,16 @@
-import UserDao from '../database/user/UserDao';
-import User from '../database/user/User';
+import { User, UserDao } from '../database/user/UserDao';
 import JWTUtils from '../security/JWTUtils';
 import BCryptUtils from '../security/BCryptUtils';
 import ErrorUtils from '../error/ErrorUtils';
 import Validator from '../schema/validator';
 
+const dao = new UserDao();
+
 export default class LoginService {
 
     static login(req, res, next) {
         if (Validator.loginPost(req.body)) {
-            UserDao.getUserByUsername(req.body.username, (err, user) => {
+            dao.findUserByUsername(req.body.username, (err, user) => {
                 if (err) {
                     return next(err);
                 }

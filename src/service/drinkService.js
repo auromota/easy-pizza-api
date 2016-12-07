@@ -1,5 +1,6 @@
-import DrinkDao from '../database/drink/DrinkDao';
-import Drink from '../database/drink/Drink';
+import {Drink, DrinkDao} from '../database/drink/DrinkDao';
+
+const dao = new DrinkDao();
 
 export default class DrinkService {
 
@@ -7,7 +8,7 @@ export default class DrinkService {
         let drink = new Drink();
         drink.name = req.body.name;
         drink.price = req.body.price;
-        DrinkDao.save(drink, (err, drink) => {
+        dao.save(drink, (err, drink) => {
             if (err) {
                 return next(err);
             }
@@ -20,7 +21,7 @@ export default class DrinkService {
         drink.name = req.body.name;
         drink._id = req.body.id;
         drink.price = req.body.price;
-        DrinkDao.update(Drink, drink, (err, drink) => {
+        dao.update(Drink, drink, (err, drink) => {
             if (err) {
                 return next(err);
             }

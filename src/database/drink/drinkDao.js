@@ -1,6 +1,24 @@
-import mongoose from 'mongoose';
 import GenericDao from '../generic/GenericDao';
+import mongoose from 'mongoose';
 
-export default class DrinkDao extends GenericDao {
+let drinkSchema = new mongoose.Schema({
+    name: {
+        type: String,
+        required: true,
+        unique: true
+    },
+    price: {
+        type: Number,
+        required: true
+    }
+});
+
+export const Drink = mongoose.model('Drink', drinkSchema);
+
+export class DrinkDao extends GenericDao {
+
+    constructor() {
+        super(Drink);
+    }
 
 }
