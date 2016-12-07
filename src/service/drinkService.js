@@ -1,4 +1,4 @@
-import {Drink, DrinkDao} from '../database/drinkDao';
+import { Drink, DrinkDao } from '../database/drinkDao';
 
 const dao = new DrinkDao();
 
@@ -21,7 +21,7 @@ export default class DrinkService {
         drink.name = req.body.name;
         drink._id = req.body.id;
         drink.price = req.body.price;
-        dao.update(Drink, drink, (err, drink) => {
+        dao.update(drink, (err, drink) => {
             if (err) {
                 return next(err);
             }

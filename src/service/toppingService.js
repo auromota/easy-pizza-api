@@ -1,11 +1,16 @@
-import {ToppingDao, Topping} from '../database/toppingDao';
+import { ToppingDao, Topping } from '../database/toppingDao';
 
 const dao = new ToppingDao();
 
 export default class ToppingService {
 
     static find(req, res, next) {
-        dao.find();
+        dao.find((err, toppings) => {
+            if (err) {
+                return next(err);
+            }
+            res.status(200).json(toppings);
+        });
     }
 
     static create(req, res, next) {
@@ -27,7 +32,7 @@ export default class ToppingService {
         topping._id = req.body.id;
         topping.price = req.body.price;
         topping.photo = req.body.photo;
-        dao.update(Topping, topping, (err, topping) => {
+        dao.update(topping, (err, topping) => {
             if (err) {
                 return next(err);
             }
@@ -36,7 +41,7 @@ export default class ToppingService {
     }
 
     static remove(req, res, next) {
-        dao.remove(Topping, req.params.id, (err, item) => {
+        dao.remove(req.query.id, (err, item) => {
             if (err) {
                 return next(err);
             }

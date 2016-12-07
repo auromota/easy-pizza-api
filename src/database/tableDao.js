@@ -9,11 +9,13 @@ let tableSchema = new mongoose.Schema({
     },
     availability: {
         type: Boolean,
-        required: true
+        required: true,
+        default: true
     },
     client: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'Client'
+        ref: 'Client',
+        default: null
     }
 });;
 
