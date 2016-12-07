@@ -4,6 +4,18 @@ export default class GenericDao {
         this.model = model;
     }
 
+    /**
+     * This callback is called to handle the response.
+     * 
+     * @callback handlerCallback
+     * @param {object|null} err
+     * @param {Object[]} documents - An array containing all documents of the collection.
+     */
+
+    /**
+     * Finds all documents of a collection and executes the callback.
+     * @param {handlerCallback} callback - The callback that handles the response.
+     */
     find(callback) {
         this.model.find(callback);
     }
