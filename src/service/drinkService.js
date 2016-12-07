@@ -1,4 +1,4 @@
-import {Drink, DrinkDao} from '../database/drink/DrinkDao';
+import {Drink, DrinkDao} from '../database/drink/drinkDao';
 
 const dao = new DrinkDao();
 

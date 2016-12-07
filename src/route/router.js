@@ -1,9 +1,9 @@
 import express from 'express';
 import AuthHandler from '../security/authHandler';
-import DrinkService from '../service/DrinkService';
-import ToppingService from '../service/ToppingService';
-import UserService from '../service/UserService';
-import LoginService from '../service/LoginService';
+import DrinkService from '../service/drinkService';
+import ToppingService from '../service/toppingService';
+import UserService from '../service/userService';
+import LoginService from '../service/loginService';
 import passport from 'passport';
 import Facebook from 'passport-facebook';
 

@@ -1,4 +1,4 @@
-import GenericDao from '../generic/GenericDao';
+import GenericDao from '../generic/genericDao';
 import mongoose from 'mongoose';
 
 let drinkSchema = new mongoose.Schema({

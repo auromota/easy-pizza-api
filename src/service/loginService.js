@@ -1,7 +1,7 @@
-import { User, UserDao } from '../database/user/UserDao';
-import JWTUtils from '../security/JWTUtils';
-import BCryptUtils from '../security/BCryptUtils';
-import ErrorUtils from '../error/ErrorUtils';
+import { User, UserDao } from '../database/user/userDao';
+import JWTUtils from '../security/jwtUtils';
+import BCryptUtils from '../security/bcryptUtils';
+import ErrorUtils from '../error/errorUtils';
 import Validator from '../schema/validator';
 
 const dao = new UserDao();
