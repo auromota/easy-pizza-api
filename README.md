@@ -1,10 +1,16 @@
 # About this
-The API is being developed in NodeJS with Express and MongoDB.
+The API is being developed in NodeJS with Express, MongoDB, Mongoose and PassportJS for Facebook login.
 
 ## How to run
 After downloading or cloning the repository, you must install its dependencies:
 
 ```bash
+npm install
+```
+
+You need to do the same inside the static files folder.
+```bash
+cd src/public
 npm install
 ```
 
@@ -48,6 +54,7 @@ npm run dev
 
 ## Contributors
 Auro Mota <auro@blueorc.com>
+Wellington Braga <wellington@blueorc.com>
 
 ## License
 The software is released under the MIT license.
