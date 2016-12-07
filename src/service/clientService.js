@@ -1,5 +1,4 @@
 import { Client, ClientDao } from '../database/clientDao';
-import * as _ from 'lodash';
 
 const dao = new ClientDao();
 
