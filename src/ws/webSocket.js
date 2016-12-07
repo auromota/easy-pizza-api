@@ -1,6 +1,6 @@
 import { Server as WebSocketServer } from 'ws';
-import AuthHandler from '../security/AuthHandler';
-import Config from '../config/Config';
+import AuthHandler from '../security/authHandler';
+import Config from '../config/config';
 
 export default class WebSocket {
 
