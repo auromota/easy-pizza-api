@@ -1,6 +1,7 @@
 import express from 'express';
 import AuthHandler from '../security/authHandler';
-import { facebookHandler, getFacebookConfig } from '../security/facebookHandler';
+import ClientService from '../service/clientService';
+import getFacebookConfig from '../config/facebookConfig';
 import DrinkService from '../service/drinkService';
 import ToppingService from '../service/toppingService';
 import UserService from '../service/userService';
@@ -12,7 +13,7 @@ const router = express.Router();
 
 function getRouter() {
 
-    passport.use(new Facebook.Strategy(getFacebookConfig(), facebookHandler));
+    passport.use(new Facebook.Strategy(getFacebookConfig(), ClientService.save));
 
     router.get('/auth/facebook', passport.authenticate('facebook', { scope: 'email' }));
     router.get('/auth/facebook/callback', passport.authenticate('facebook', {
