@@ -1,12 +1,8 @@
 var app = angular.module("app", ['ui.router', 'ngResource']);
 
-app.config(['$urlRouterProvider', '$stateProvider', '$locationProvider', function ($urlRouterProvider, $stateProvider, $locationProvider) {
+app.config(['$urlRouterProvider', '$stateProvider', function ($urlRouterProvider, $stateProvider, ) {
 
     $urlRouterProvider.otherwise('/');
-    // $locationProvider.html5Mode({
-    //     enabled: true,
-    //     requireBase: false
-    // });
 
     $stateProvider
         .state('init', {
