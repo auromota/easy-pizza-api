@@ -1,0 +1,28 @@
+<div class="row">
+    <div class="col-sm-4 col-md-4 col-lg-4">
+        <h1 class="title">Clientes</h1>
+    </div>
+</div>
+<div class="row">
+    <br>
+    <div class="panel panel-default">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Foto</th>
+                    <th>Nome</th>
+                    <th>Email</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="user in clients">
+                    <td>
+                        <img class="img-td" ng-src="{{user.photo}}">
+                    </td>
+                    <td>{{user.name}}</td>
+                    <td>{{user.email}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

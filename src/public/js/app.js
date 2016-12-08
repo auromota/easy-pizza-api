@@ -57,7 +57,7 @@ app.config(['$urlRouterProvider', '$stateProvider',
                 },
                 params: {
                     pizza: null
-                 }
+                }
             })
             .state('admin.drinks', {
                 url: '/drinks',
@@ -77,7 +77,7 @@ app.config(['$urlRouterProvider', '$stateProvider',
                 params: {
                     drink: null
                 }
-            })            
+            })
             .state('admin.toppings', {
                 url: '/toppings',
                 controller: 'toppingsController',
@@ -95,6 +95,23 @@ app.config(['$urlRouterProvider', '$stateProvider',
                 },
                 params: {
                     topping: null
+                }
+            })
+            .state('admin.logs', {
+                url: '/logs',
+                abstract: true,
+                controller: 'adminLogsController',
+                templateUrl: 'partials/_admin_logs.html',
+                data: {
+                    authorizationAdmin: true
+                }
+            })
+            .state('admin.logs.clients', {
+                url: '/clients',
+                controller: 'adminUsersController',
+                templateUrl: 'partials/_admin_users.html',
+                data: {
+                    authorizationAdmin: true
                 }
             })
             .state('client', {

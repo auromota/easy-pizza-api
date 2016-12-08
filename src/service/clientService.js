@@ -21,4 +21,13 @@ export default class ClientService {
         });
     }
 
+    static find(req, res, next) {
+        dao.find((err, clients) => {
+            if (err) {
+                return next(err);
+            }
+            res.status(200).json(clients);
+        })
+    }
+
 }

@@ -7,6 +7,7 @@ import PizzaService from '../service/pizzaService';
 import UserService from '../service/userService';
 import LoginService from '../service/loginService';
 import OrderService from '../service/orderService';
+import ClientService from '../service/clientService';
 import passport from 'passport';
 
 const router = express.Router();
@@ -20,6 +21,9 @@ function getRouter() {
     // Admin authentication
     router.post('/api/auth/login', LoginService.login);
     router.post('/api/users', UserService.create);
+
+    // Clients
+    router.get('/api/clients', AuthHandler.authorizeRequest, ClientService.find);
 
     // Drinks
     router.get('/api/drinks', AuthHandler.authorizeRequest, DrinkService.find);

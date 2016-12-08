@@ -24,6 +24,12 @@
                             <li ng-class="{'active' : isPizzas}">
                                 <a ui-sref="admin.pizzas">Pizzas</a>
                             </li>
+                            <li ng-class="{'active' : isLogs}" class="dropdown">
+                                <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Relatórios <span class="caret"></span></a>
+                                <ul class="dropdown-menu">
+                                    <li><a ui-sref="admin.logs.clients">Clientes</a></li>
+                                </ul>
+                            </li>
                         </ul>
 
                         <ul class="nav navbar-nav navbar-right">
