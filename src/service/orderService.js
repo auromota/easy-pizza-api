@@ -34,7 +34,6 @@ export default class OrderService {
                     return;
                 }
                 dao.findPopulatedById(results[1][0]._id, (err, order) => {
-                    io.emit('newOrder', order);
                     res.status(200).json(order);
                 });
             });
@@ -75,7 +74,14 @@ export default class OrderService {
                 if (err) {
                     return next(err);
                 }
-                io.emit('orderUpdated', order);
+                let pizza = order.pizzas.find(pizza => pizza.id === req.body.pizza);
+                let data = {
+                    table: order.table.num,
+                    client: order.client.name,
+                    photo: order.client.photo,
+                    description: pizza.name
+                };
+                io.emit('newOrder', data);
                 res.status(200).json(order);
             });
         } else {
@@ -89,7 +95,14 @@ export default class OrderService {
                 if (err) {
                     return next(err);
                 }
-                io.emit('orderUpdated', order);
+                let drink = order.drinks.find(drink => drink.id === req.body.drink);
+                let data = {
+                    table: order.table.num,
+                    client: order.client.name,
+                    photo: order.client.photo,
+                    description: drink.name
+                };
+                io.emit('newOrder', data);
                 res.status(200).json(order);
             });
         } else {
@@ -104,7 +117,6 @@ export default class OrderService {
                     return next(err);
                 }
                 TableService.setAvailability(order.table, true, '', () => { });
-                io.emit('orderDeleted', order);
                 res.status(200).json(order);
             });
         } else {

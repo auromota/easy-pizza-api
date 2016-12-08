@@ -14,17 +14,19 @@
                             <th>Mesa</th>
                             <th>Cliente</th>
                             <th>Foto</th>
-                            <th>Detalhes</th>
+                            <th>Descrição</th>
                             <th>Finalizar</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr ng-repeat="order in orders">
-                            <td>{{order.table.num}}</td>
-                            <td>{{order.client.name}}</td>
-                            <td><img ng-src="{{order.client.photo}}"></td>
-                            <td></td>
-                            <td></td>
+                            <td>{{order.table}}</td>
+                            <td>{{order.client}}</td>
+                            <td><img ng-src="{{order.photo}}"></td>
+                            <td>{{order.description}}</td>
+                            <td>
+                                <button class="btn btn-mini btn-info" ng-click="removeOrder(order)"><i class="fa fa-pencil-square" aria-hidden="true"></i></button>
+                            </td>
                         </tr>
                     </tbody>
                 </table>
