@@ -41,6 +41,15 @@ const orderDrinkValidator = validator({
     additionalProperties: false
 });
 
+const findOrderValidator = validator({
+    required: ['id'],
+    type: 'object',
+    properties: {
+        id: { type: 'string' }
+    },
+    additionalProperties: false
+});
+
 const Validator = {
     loginPost(data) {
         return loginPostValidator(data);
@@ -53,6 +62,9 @@ const Validator = {
     },
     orderDrink(data) {
         return orderDrinkValidator(data);
+    },
+    findOrder(data) {
+        return findOrderValidator(data);
     }
 };
 

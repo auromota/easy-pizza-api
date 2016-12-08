@@ -8,6 +8,19 @@ const dao = new OrderDao();
 
 export default class OrderService {
 
+    static findOrder(req, res, next) {
+        if (Validator.findOrder(req.params)) {
+            dao.findPopulatedById(req.params.id, (err, order) => {
+                if (err) {
+                    return next(err);
+                }
+                res.status(200).json(order);
+            });
+        } else {
+            next(ErroUtils.BadRequest);
+        }
+    }
+
     static openOrder(req, res, next) {
         if (Validator.openOrder(req.body)) {
             async.parallel([

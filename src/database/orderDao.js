@@ -39,6 +39,16 @@ export class OrderDao extends GenericDao {
         super(Order);
     }
 
+    findPopulatedById(orderId, callback) {
+        Order.findById(orderId)
+            .populate('client')
+            .populate('drinks')
+            .populate('pizzas')
+            .populate('pizzas.toppings')
+            .populate('table')
+            .exec(callback);
+    }
+
     removeIncompleteOrderByTableId(tableId, callback) {
         let query = { table: tableId, finalDate: null };
         Order.findOneAndRemove(query, callback);

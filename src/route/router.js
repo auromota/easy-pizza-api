@@ -42,6 +42,7 @@ function getRouter() {
     router.get('/api/tables', AuthHandler.authorizeRequest, TableService.find);
 
     // Orders
+    router.get('/api/orders/:id', AuthHandler.authorizeRequest, OrderService.findOrder);
     router.post('/api/orders', AuthHandler.authorizeRequest, OrderService.openOrder);
     router.post('/api/orders/:id/pizzas', AuthHandler.authorizeRequest, OrderService.orderPizza);
     router.post('/api/orders/:id/drinks', AuthHandler.authorizeRequest, OrderService.orderDrink);
