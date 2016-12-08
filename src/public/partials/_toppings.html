@@ -24,12 +24,12 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>1</td>
+                        <tr ng-repeat="topping in toppings">
+                            <td>{{topping._id}}</td>
                             <td>
-                                <span style="font-size:12px">Mussarela, presunto e azeitonas</span>
+                                <span style="font-size:12px">{{topping.name}}</span>
                             </td>
-                            <td>R$32,00</td>
+                            <td>{{topping.price | currency : 'R$ ' : 2}}</td>
                             <td>
                                 <button class="btn btn-mini btn-info"><i class="fa fa-pencil-square" aria-hidden="true"></i></button>
                                 <button class="btn btn-mini btn-danger"><i class="fa fa-minus-square" aria-hidden="true"></i></button>

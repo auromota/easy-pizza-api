@@ -42,6 +42,30 @@ app.config(['$urlRouterProvider', '$stateProvider',
                     authorization: true
                 }
             })
+            .state('admin.drinks', {
+                url: '/drinks',
+                controller: 'adminDashboardController',
+                templateUrl: 'partials/_admin_dashboard.html',
+                data: {
+                    authorization: true
+                }
+            })
+            .state('admin.toppings', {
+                url: '/toppings',
+                controller: 'toppingsController',
+                templateUrl: 'partials/_toppings.html',
+                data: {
+                    authorization: true
+                }
+            })
+            .state('admin.newTopping', {
+                url: '/newTopping',
+                controller: 'newToppingController',
+                templateUrl: 'partials/_new_topping.html',
+                data: {
+                    authorization: true
+                }
+            })
             .state('defineTable', {
                 url: '/defineTable',
                 controller: 'defineTableController',
@@ -61,16 +85,6 @@ app.config(['$urlRouterProvider', '$stateProvider',
                 url: '/clientListMeal',
                 controller: 'clientListMealController',
                 templateUrl: 'partials/_client_list_meal.html'
-            })
-            .state('toppings', {
-                url: '/toppings',
-                controller: 'toppingsController',
-                templateUrl: 'partials/_toppings.html'
-            })
-            .state('newTopping', {
-                url: '/newTopping',
-                controller: 'newToppingController',
-                templateUrl: 'partials/_new_topping.html'
             });
 
     }

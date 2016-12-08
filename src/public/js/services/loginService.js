@@ -1,21 +1,33 @@
 app.service('LoginService', ['$resource', '$http', function ($resource, $http) {
 
+    const ADMIN_TOKEN = 'adminToken';
+
     return {
-        login: login,
-        register: register,
-        isAdminAuthenticated: isAdminAuthenticated
+        loginAdmin,
+        registerAdmin,
+        isAdminAuthenticated,
+        getAdminToken,
+        unregisterAdmin
     };
 
-    function login(user) {
+    function loginAdmin(user) {
         return $http.post('./api/auth/login', user);
     }
 
-    function register(token) {
-        localStorage['adminToken'] = token;
+    function registerAdmin(token) {
+        localStorage[ADMIN_TOKEN] = token;
     }
 
     function isAdminAuthenticated() {
-        return localStorage['adminToken'] && localStorage['adminToken'].length > 0;
+        return localStorage[ADMIN_TOKEN] && localStorage[ADMIN_TOKEN].length > 0;
+    }
+
+    function getAdminToken() {
+        return localStorage[ADMIN_TOKEN];
+    }
+
+    function unregisterAdmin() {
+        localStorage[ADMIN_TOKEN] = '';
     }
 
 }]);

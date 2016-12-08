@@ -4,12 +4,17 @@ app.controller('adminAccessController', ['$scope', 'LoginService', '$state',
         $scope.user = {};
 
         $scope.login = function () {
-            LoginService.login($scope.user).then(function (result) {
-                LoginService.register(result.data.token);
+            LoginService.loginAdmin($scope.user).then(function (result) {
+                LoginService.registerAdmin(result.data.token);
                 $state.go('admin.dashboard');
-            }, function(err) {
+            }, function (err) {
                 console.log(err);
             });
+        }
+
+        $scope.logout = function () {
+            LoginService.unregisterAdmin();
+            $state.go('login.admin');
         }
 
     }

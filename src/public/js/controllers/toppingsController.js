@@ -1,3 +1,7 @@
-app.controller('toppingsController', ['$scope', function ($scope) {
+app.controller('toppingsController', ['$scope', 'Topping',
+    function ($scope, Topping) {
 
-}]);
+        $scope.toppings = Topping.query();
+
+    }]
+);
