@@ -114,6 +114,14 @@ app.config(['$urlRouterProvider', '$stateProvider',
                     authorizationAdmin: true
                 }
             })
+            .state('admin.logs.pizzas', {
+                url: '/pizzas',
+                controller: 'adminLogsPizzaController',
+                templateUrl: 'partials/_admin_logs_pizza.html',
+                data: {
+                    authorizationAdmin: true
+                }
+            })
             .state('client', {
                 url: '/client',
                 abstract: true,

@@ -39,6 +39,21 @@ export class OrderDao extends GenericDao {
         super(Order);
     }
 
+    findPopulated(callback) {
+        Order.find()
+            .populate('client')
+            .populate('drinks')
+            .populate({
+                path: 'pizzas',
+                populate: {
+                    path: 'toppings',
+                    model: 'Topping'
+                }
+            })
+            .populate('table')
+            .exec(callback);
+    }
+
     findPopulatedById(orderId, callback) {
         Order.findById(orderId)
             .populate('client')

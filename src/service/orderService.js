@@ -9,6 +9,15 @@ const dao = new OrderDao();
 
 export default class OrderService {
 
+    static findAll(req, res, next) {
+        dao.findPopulated((err, orders) => {
+            if (err) {
+                return next(err);
+            }
+            res.status(200).json(orders);
+        })
+    }
+
     static findOrder(req, res, next) {
         if (Validator.identify(req.params)) {
             dao.findPopulatedById(req.params.id, (err, order) => {

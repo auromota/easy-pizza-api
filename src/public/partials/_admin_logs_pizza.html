@@ -1,0 +1,26 @@
+<div class="row">
+    <div class="col-sm-4 col-md-4 col-lg-4">
+        <h1 class="title">Pizzas mais pedidas</h1>
+    </div>
+</div>
+<div class="row">
+    <br>
+    <div class="panel panel-default">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Número de pedidos</th>
+                    <th>Nome</th>
+                    <th>Preço</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="pizza in pizzas">
+                    <td>{{pizza.numOrders}}</td>
+                    <td>{{pizza.name}}</td>
+                    <td>{{pizza.price | currency : 'R$ ' : 2}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
