@@ -57,16 +57,16 @@ app.config(['$urlRouterProvider', '$stateProvider',
                 },
                 params: {
                     pizza: null
+                 }
+            })
+            .state('admin.drinks', {
+                url: '/drinks',
+                controller: 'drinksController',
+                templateUrl: 'partials/_admin_drinks.html',
+                data: {
+                    authorizationAdmin: true
                 }
             })
-            // .state('admin.drinks', {
-            //     url: '/drinks',
-            //     controller: 'adminDashboardController',
-            //     templateUrl: 'partials/_admin_dashboard.html',
-            //     data: {
-            //         authorizationAdmin: true
-            //     }
-            // })
             .state('admin.toppings', {
                 url: '/toppings',
                 controller: 'toppingsController',

@@ -1,0 +1,41 @@
+<div class="container">
+    <div class="row">
+        <div class="col-sm-3 col-md-3 col-lg-3 col-md-offset-1">
+            <h1 class="title">Ingredientes</h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-10 col-md-10 col-lg-10 col-md-offset-1">
+            <hr>
+            <button class="btn btn-primary" ui-sref="admin.saveTopping"> <i class="fa fa-plus-square" aria-hidden="true"></i> </button>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-10 col-md-10 col-lg-10 col-md-offset-1">
+            <br>
+            <div class="panel panel-default">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Nome</th>
+                            <th>Preço</th>
+                            <th>Controle</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="drink in drinks">
+                            <td>
+                                <span style="font-size:12px">{{drink.name}}</span>
+                            </td>
+                            <td>{{drink.price | currency : 'R$ ' : 2}}</td>
+                            <td>
+                                <button class="btn btn-mini btn-info" ui-sref="admin.saveDrink({drink: drink})"><i class="fa fa-pencil-square" aria-hidden="true"></i></button>
+                                <button class="btn btn-mini btn-danger" ng-click="remove(drink)"><i class="fa fa-minus-square" aria-hidden="true"></i></button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
