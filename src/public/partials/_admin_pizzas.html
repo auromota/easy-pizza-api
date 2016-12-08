@@ -17,24 +17,19 @@
                 <table class="table table-striped">
                     <thead>
                         <tr>
-                            <th>#</th>
                             <th>Nome</th>
-                            <th>Valor</th>
                             <th>Controle</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <!--<tr ng-repeat="topping in toppings">
-                            <td><img src="{{topping.photo}}" class="topping-td"></td>
+                        <tr ng-repeat="pizza in pizzas">
                             <td>
-                                <span style="font-size:12px">{{topping.name}}</span>
+                                <span style="font-size:12px">{{pizza.name}}</span>
                             </td>
-                            <td>{{topping.price | currency : 'R$ ' : 2}}</td>
                             <td>
-                                <button class="btn btn-mini btn-info" ui-sref="admin.saveTopping({topping: topping})"><i class="fa fa-pencil-square" aria-hidden="true"></i></button>
-                                <button class="btn btn-mini btn-danger" ng-click="remove(topping)"><i class="fa fa-minus-square" aria-hidden="true"></i></button>
+                                <button class="btn btn-mini btn-info"><i class="fa fa-pencil-square" aria-hidden="true"></i></button>
                             </td>
-                        </tr>-->
+                        </tr>
                     </tbody>
                 </table>
             </div>

@@ -1,3 +1,5 @@
-app.controller('pizzasController', ['$scope', function($scope){
+app.controller('pizzasController', ['$scope', 'Pizza', function($scope, Pizza){
+
+    $scope.pizzas = Pizza.query();
 
 }]);
