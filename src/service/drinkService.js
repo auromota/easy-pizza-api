@@ -30,9 +30,6 @@ export default class DrinkService {
         drink.name = req.body.name;
         drink._id = req.body._id;
         drink.price = req.body.price;
-
-        console.log(drink);
-
         dao.update(drink, (err, drink) => {
             if (err) {
                 return next(err);
