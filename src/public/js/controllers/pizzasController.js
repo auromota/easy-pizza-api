@@ -2,15 +2,15 @@ app.controller('pizzasController', ['$scope', 'Pizza', 'PriceService', function 
 
     $scope.pizzas = Pizza.query(function () {
         $scope.pizzas.map(pizza => {
-            pizza.price = PriceService.sumPrice(pizza.toppings);
+            pizza.price = PriceService.getPizzaPrice(pizza);
             return pizza;
         });
     });
 
     // $scope.pizzas = $scope.pizzas.map(pizza => {
-    //     pizza.price = PriceService.sumPrice(pizza.toppings);
+    //     pizza.price = PriceService.getPizzaPrice(pizza);
     //     return pizza;
     // });
-    // $scope.pizzas.forEach(pizza => pizza.price = PriceService.sumPrice(pizza.topppings));
+    // $scope.pizzas.forEach(pizza => pizza.price = PriceService.getPizzaPrice(pizza));
 
 }]);
