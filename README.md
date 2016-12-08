@@ -1,5 +1,15 @@
 # About this
-The API is being developed in NodeJS with Express, MongoDB, Mongoose and PassportJS for Facebook login.
+The API is being developed in NodeJS.
+
+### Technologies
+Some technologies being used:
+* Express
+* MongoDB
+* Mongoose
+* JWT 
+* PassportJS
+* Socket.io
+* AngularJS
 
 ## How to run
 After downloading or cloning the repository, you must install its dependencies:
@@ -54,6 +64,7 @@ npm run dev
 
 ## Contributors
 Auro Mota <auro@blueorc.com>
+
 Wellington Braga <wellington@blueorc.com>
 
 ## License
