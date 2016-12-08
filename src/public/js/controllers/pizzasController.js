@@ -6,4 +6,12 @@ app.controller('pizzasController', ['$scope', 'Pizza', 'PriceService', function 
             return pizza;
         });
     });
+    
+    $scope.remove = function (pizza) {
+        if (confirm('Deseja remover a pizza ' + pizza.name + '?')) {
+            Pizza.remove({ id: pizza._id }, function (res) {
+                $scope.pizzas = $scope.pizzas.filter(pizza => pizza._id !== res._id);
+            });
+        }
+    }
 }]);
