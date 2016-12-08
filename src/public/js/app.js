@@ -73,12 +73,22 @@ app.config(['$urlRouterProvider', '$stateProvider',
                 templateUrl: 'partials/_client_menu.html',
                 controller: 'clientMenuController'
             })
+            .state('table', {
+                url: '/table',
+                templateUrl: 'partials/_client_table.html',
+                controller: 'clientTableController',
+                data: {
+                    authorizationClient: true,
+                    tableNotSet: true
+                }
+            })
             .state('client.dashboard', {
                 url: '/dashboard',
                 controller: 'clientDashboardController',
-                templateUrl: 'partials/_client_dashboard.html',
+                templateUrl: 'partials/_client_orders.html',
                 data: {
-                    authorizationClient: true
+                    isProtectedClient: true,
+                    authorizationTable: true
                 }
             })
             .state('client.drinks', {
@@ -86,7 +96,8 @@ app.config(['$urlRouterProvider', '$stateProvider',
                 controller: 'clientDrinkController',
                 templateUrl: 'partials/_client_drinks.html',
                 data: {
-                    authorizationClient: true
+                    isProtectedClient: true,
+                    authorizationTable: true
                 }
             })
             .state('defineTable', {

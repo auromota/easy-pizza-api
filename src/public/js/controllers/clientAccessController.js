@@ -4,7 +4,7 @@ app.controller('clientAccessController', ['$scope', '$location', '$state', 'Logi
         let token = $location.search().token;
         if (token) {
             LoginService.registerClient(token);
-            $state.go('client.dashboard');
+            $state.go('table');
         }
 
         $scope.facebook = function () {

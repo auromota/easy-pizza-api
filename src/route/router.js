@@ -2,6 +2,7 @@ import express from 'express';
 import AuthHandler from '../security/authHandler';
 import DrinkService from '../service/drinkService';
 import ToppingService from '../service/toppingService';
+import TableService from '../service/tableService';
 import PizzaService from '../service/pizzaService';
 import UserService from '../service/userService';
 import LoginService from '../service/loginService';
@@ -36,6 +37,9 @@ function getRouter() {
     router.post('/api/pizzas', AuthHandler.authorizeRequest, PizzaService.create);
     router.put('/api/pizzas/:id', AuthHandler.authorizeRequest, PizzaService.update);
     router.delete('/api/pizzas/:id', AuthHandler.authorizeRequest, PizzaService.remove);
+
+    // Tables
+    router.get('/api/tables', AuthHandler.authorizeRequest, TableService.find);
 
     // Orders
     router.post('/api/orders', AuthHandler.authorizeRequest, OrderService.openOrder);
