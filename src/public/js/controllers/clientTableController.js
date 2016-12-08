@@ -8,7 +8,7 @@ app.controller('clientTableController', ['$scope', '$state', 'Table', 'Order', '
         $scope.sit = function (table) {
             Order.openOrder({ table: table._id }).then(function (response) {
                 LoginService.sitTable(table.num);
-                Order.store(response.data);
+                LoginService.saveOrder(response.data);
                 $state.go('client.orders');
             });
         }

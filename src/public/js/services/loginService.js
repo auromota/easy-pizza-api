@@ -4,6 +4,9 @@ app.service('LoginService', ['$resource', '$http',
         const ADMIN_TOKEN = 'adminToken';
         const CLIENT_TOKEN = 'loginToken';
         const TABLE_NUM = 'tableNum';
+        const ORDER_ID = 'ORDER_ID';
+
+        let order = null;
 
         return {
             loginAdmin,
@@ -16,7 +19,11 @@ app.service('LoginService', ['$resource', '$http',
             isClientAuthenticated,
             sitTable,
             removeTable,
-            isTableSet
+            isTableSet,
+            getTable,
+            saveOrder,
+            removeOrder,
+            getOrderId
         };
 
         function loginAdmin(user) {
@@ -54,7 +61,6 @@ app.service('LoginService', ['$resource', '$http',
 
         function unregisterClient() {
             localStorage[CLIENT_TOKEN] = '';
-            removeTable();
         }
 
         function sitTable(num) {
@@ -67,6 +73,24 @@ app.service('LoginService', ['$resource', '$http',
 
         function isTableSet() {
             return localStorage[TABLE_NUM] && localStorage[TABLE_NUM].length > 0;
+        }
+
+        function getTable() {
+            return localStorage[TABLE_NUM];
+        }
+
+        function saveOrder(data) {
+            localStorage[ORDER_ID] = data._id;
+            order = data;
+        }
+
+        function removeOrder() {
+            localStorage[ORDER_ID] = '';
+            order = null;
+        }
+
+        function getOrderId() {
+            return localStorage[ORDER_ID];
         }
 
     }]

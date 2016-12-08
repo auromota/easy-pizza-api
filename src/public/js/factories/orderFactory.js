@@ -1,7 +1,5 @@
 app.factory('Order', ['$http', 'LoginService', function ($http, LoginService) {
 
-    const ORDER_ID = 'ORDER_ID';
-
     const headers = {
         token: getToken
     };
@@ -10,7 +8,6 @@ app.factory('Order', ['$http', 'LoginService', function ($http, LoginService) {
 
     return {
         openOrder,
-        store,
         getOrder
     };
 
@@ -24,10 +21,11 @@ app.factory('Order', ['$http', 'LoginService', function ($http, LoginService) {
         if (order) {
             return callback(null, order);
         }
-        if (getId()) {
-            return $http.get('./api/orders/' + getId(), { headers }).then(
+        let orderId = LoginService.getOrderId();
+        if (orderId) {
+            return $http.get('./api/orders/' + orderId, { headers }).then(
                 (result) => {
-                    order = result.data;
+                    LoginService.saveOrder(result.data);
                     callback(null, result.data);
                 }, (err) => {
                     callback(err);
@@ -35,15 +33,6 @@ app.factory('Order', ['$http', 'LoginService', function ($http, LoginService) {
             );
         }
         return callback({ message: 'Order ID is missing.' });
-    }
-
-    function store(data) {
-        localStorage[ORDER_ID] = data._id;
-        order = data;
-    }
-
-    function getId() {
-        return localStorage[ORDER_ID];
     }
 
     function getToken() {

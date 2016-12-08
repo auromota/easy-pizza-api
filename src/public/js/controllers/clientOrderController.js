@@ -1,5 +1,6 @@
 app.controller('clientOrderController', ['$scope', 'Order', 'PriceService',
     function ($scope, Order, PriceService) {
+        
         Order.getOrder((err, order) => {
             $scope.order = order;
             $scope.drinksTotal = PriceService.sumPrice($scope.order.drinks);

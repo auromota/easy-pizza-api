@@ -21,7 +21,7 @@ app.controller('generalController', ['$scope', '$rootScope', 'LoginService', '$s
                 }
                 if (tableNotSet && LoginService.isTableSet()) {
                     event.preventDefault();
-                    if (LoginService.isProtectedClient()) {
+                    if (LoginService.isClientAuthenticated()) {
                         $state.go('client.orders');
                     } else {
                         $state.go('login.client');
