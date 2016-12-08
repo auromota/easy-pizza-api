@@ -69,6 +69,16 @@ app.config(['$urlRouterProvider', '$stateProvider',
                     topping: null
                 }
             })
+            .state('client', {
+                url: '/client',
+                abstract: true,
+                templateUrl: 'partials/_client_menu.html'
+            })
+            .state('client.dashboard', {
+                url: '/dashboard',
+                controller: 'clientDashboardController',
+                templateUrl: 'partials/_client_dashboard.html'
+            })
             .state('defineTable', {
                 url: '/defineTable',
                 controller: 'defineTableController',
@@ -78,11 +88,6 @@ app.config(['$urlRouterProvider', '$stateProvider',
                 url: '/clientAccess',
                 controller: 'clientAccessController',
                 templateUrl: 'partials/_client_access.html'
-            })
-            .state('clientDashboard', {
-                url: '/clientDashboard',
-                controller: 'clientDashboardController',
-                templateUrl: 'partials/_client_dashboard.html'
             })
             .state('clientListMeal', {
                 url: '/clientListMeal',
