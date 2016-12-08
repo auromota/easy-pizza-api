@@ -18,6 +18,7 @@
                     <thead>
                         <tr>
                             <th>Nome</th>
+                            <th>Preço</th>
                             <th>Controle</th>
                         </tr>
                     </thead>
@@ -27,7 +28,11 @@
                                 <span style="font-size:12px">{{pizza.name}}</span>
                             </td>
                             <td>
-                                <button class="btn btn-mini btn-info"><i class="fa fa-pencil-square" aria-hidden="true"></i></button>
+                                {{pizza.price | currency : 'R$ ' : 2}}
+                            </td>
+                            <td>
+                                <button class="btn btn-mini btn-info" ui-sref="admin.savePizza({pizza: pizza})"><i class="fa fa-pencil-square" aria-hidden="true"></i></button>
+                                <button class="btn btn-mini btn-danger" ng-click="remove(pizza)"><i class="fa fa-minus-square" aria-hidden="true"></i></button>
                             </td>
                         </tr>
                     </tbody>

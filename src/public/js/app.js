@@ -56,7 +56,7 @@ app.config(['$urlRouterProvider', '$stateProvider',
                     authorization: true
                 },
                 params: {
-                    topping: null
+                    pizza: null
                 }
             })                        
             .state('admin.drinks', {
