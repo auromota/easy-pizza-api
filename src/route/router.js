@@ -21,6 +21,7 @@ function getRouter() {
     router.post('/api/users', UserService.create);
 
     // Drinks
+    router.get('/api/drinks', AuthHandler.authorizeRequest, DrinkService.find);
     router.post('/api/drinks', AuthHandler.authorizeRequest, DrinkService.create);
     router.put('/api/drinks', AuthHandler.authorizeRequest, DrinkService.update);
 

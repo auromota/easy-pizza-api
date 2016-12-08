@@ -6,7 +6,7 @@ app.config(['$urlRouterProvider', '$stateProvider',
         $urlRouterProvider.otherwise('/');
 
         $stateProvider
-            .state('init', {
+            .state('home', {
                 url: '/',
                 controller: 'initController',
                 templateUrl: 'partials/_init.html'
@@ -81,15 +81,18 @@ app.config(['$urlRouterProvider', '$stateProvider',
                     authorizationClient: true
                 }
             })
+            .state('client.drinks', {
+                url: '/drinks',
+                controller: 'clientDrinkController',
+                templateUrl: 'partials/_client_drinks.html',
+                data: {
+                    authorizationClient: true
+                }
+            })
             .state('defineTable', {
                 url: '/defineTable',
                 controller: 'defineTableController',
                 templateUrl: 'partials/_define_table.html'
-            })
-            .state('clientAccess', {
-                url: '/clientAccess',
-                controller: 'clientAccessController',
-                templateUrl: 'partials/_client_access.html'
             })
             .state('clientListMeal', {
                 url: '/clientListMeal',

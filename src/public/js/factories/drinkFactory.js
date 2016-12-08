@@ -1,10 +1,10 @@
-app.factory('Topping', ['$resource', 'LoginService', function ($resource, LoginService) {
+app.factory('Drink', ['$resource', 'LoginService', function ($resource, LoginService) {
 
     const headers = {
         token: getToken
     };
 
-    return $resource('./api/toppings/:id', { id: '@_id' },
+    return $resource('./api/drinks/:id', { id: '@_id' },
         {
             query: {
                 method: 'GET',

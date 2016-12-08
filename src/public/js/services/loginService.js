@@ -7,7 +7,7 @@ app.service('LoginService', ['$resource', '$http', function ($resource, $http) {
         loginAdmin,
         registerAdmin,
         isAdminAuthenticated,
-        getAdminToken,
+        getToken,
         unregisterAdmin,
         registerClient,
         unregisterClient,
@@ -19,10 +19,12 @@ app.service('LoginService', ['$resource', '$http', function ($resource, $http) {
     }
 
     function registerClient(token) {
+        unregisterAdmin();
         localStorage[CLIENT_TOKEN] = token;
     }
 
     function registerAdmin(token) {
+        unregisterClient();
         localStorage[ADMIN_TOKEN] = token;
     }
 
@@ -34,7 +36,10 @@ app.service('LoginService', ['$resource', '$http', function ($resource, $http) {
         return localStorage[ADMIN_TOKEN] && localStorage[ADMIN_TOKEN].length > 0;
     }
 
-    function getAdminToken() {
+    function getToken() {
+        if (isClientAuthenticated()) {
+            return localStorage[CLIENT_TOKEN];
+        }
         return localStorage[ADMIN_TOKEN];
     }
 
