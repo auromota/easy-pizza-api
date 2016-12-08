@@ -12,13 +12,13 @@ app.controller('saveToppingController', ['$scope', '$state', '$stateParams', 'To
 
         $scope.save = function () {
             if (isEdit) {
-                Topping.update($scope.topping, function (data) {
-                    $state.go('admin.toppings');
-                });
+                Topping.update($scope.topping, goToList);
             } else {
-                Topping.save($scope.topping, function (data) {
-                    $state.go('admin.toppings');
-                });
+                Topping.save($scope.topping, goToList);
+            }
+
+            function goToList() {
+                $state.go('admin.toppings');
             }
         }
 
