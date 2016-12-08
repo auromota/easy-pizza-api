@@ -65,7 +65,9 @@ export class OrderDao extends GenericDao {
                 return next(err);
             }
             order.pizzas.push(pizzaId);
-            order.save(callback);
+            order.save((err, order) => {
+                this.findPopulatedById(order._id, callback);
+            });
         });
     }
 
@@ -75,7 +77,9 @@ export class OrderDao extends GenericDao {
                 return next(err);
             }
             order.drinks.push(drinkId);
-            order.save(callback);
+            order.save((err, order) => {
+                this.findPopulatedById(order._id, callback);
+            });
         });
     }
 

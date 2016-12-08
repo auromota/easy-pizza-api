@@ -2,6 +2,7 @@ import { Order, OrderDao } from '../database/orderDao';
 import TableService from './tableService';
 import Validator from '../security/validator';
 import ErrorUtils from '../error/errorUtils';
+import io from '../ws/io';
 import async from 'async';
 
 const dao = new OrderDao();
@@ -32,7 +33,10 @@ export default class OrderService {
                     removeIncompleteOrder();
                     return;
                 }
-                res.status(200).json(results[1][0]);
+                dao.findPopulatedById(results[1][0]._id, (err, order) => {
+                    io.emit('newOrder', order);
+                    res.status(200).json(order);
+                });
             });
         } else {
             next(ErrorUtils.BadRequest);
@@ -71,6 +75,7 @@ export default class OrderService {
                 if (err) {
                     return next(err);
                 }
+                io.emit('orderUpdated', order);
                 res.status(200).json(order);
             });
         } else {
@@ -84,6 +89,7 @@ export default class OrderService {
                 if (err) {
                     return next(err);
                 }
+                io.emit('orderUpdated', order);
                 res.status(200).json(order);
             });
         } else {

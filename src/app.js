@@ -3,7 +3,6 @@ require('dotenv').config();
 import express from 'express';
 import mongoose from 'mongoose';
 import Connection from './database/connection';
-import WebSocket from './ws/webSocket';
 import Config from './config/config';
 import getRouter from './route/router';
 import cors from 'cors';
@@ -12,10 +11,9 @@ import methodOverride from 'method-override';
 import errorHandler from './error/errorHandler';
 import configPassport from './security/passport';
 import passport from 'passport';
+import io from './ws/io';
 
-const app = express();
-
-const ws = new WebSocket(app);
+let app = express();
 
 configPassport(passport);
 
@@ -36,9 +34,10 @@ mongoose.connection.on('connected', () => {
 });
 
 function start() {
-    app.listen(Config.port, () => {
+    let server = app.listen(Config.port, () => {
         console.log('Server is ready at port ' + Config.port);
     });
+    io.attach(server);
 }
 
 export default app;

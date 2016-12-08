@@ -1,4 +1,4 @@
-var app = angular.module('app', ['ui.router', 'ngResource']);
+var app = angular.module('app', ['ui.router', 'ngResource', 'btford.socket-io']);
 
 app.config(['$urlRouterProvider', '$stateProvider',
     function ($urlRouterProvider, $stateProvider) {
@@ -59,14 +59,14 @@ app.config(['$urlRouterProvider', '$stateProvider',
                     pizza: null
                 }
             })
-            .state('admin.drinks', {
-                url: '/drinks',
-                controller: 'adminDashboardController',
-                templateUrl: 'partials/_admin_dashboard.html',
-                data: {
-                    authorizationAdmin: true
-                }
-            })
+            // .state('admin.drinks', {
+            //     url: '/drinks',
+            //     controller: 'adminDashboardController',
+            //     templateUrl: 'partials/_admin_dashboard.html',
+            //     data: {
+            //         authorizationAdmin: true
+            //     }
+            // })
             .state('admin.toppings', {
                 url: '/toppings',
                 controller: 'toppingsController',
