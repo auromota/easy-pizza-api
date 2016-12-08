@@ -3,10 +3,15 @@ app.controller('generalController', ['$scope', '$rootScope', 'LoginService', '$s
 
         $rootScope.$on('$stateChangeStart', function (event, toState) {
             if (toState.data) {
-                var isProtected = toState.data.authorization;
-                if (isProtected && !LoginService.isAdminAuthenticated()) {
+                var isProtectedAdmin = toState.data.authorizationAdmin;
+                var isProtectedClient = toState.data.authorizationClient;
+                if (isProtectedAdmin && !LoginService.isAdminAuthenticated()) {
                     event.preventDefault();
                     $state.go('login.admin');
+                }
+                if (isProtectedClient && !LoginService.isClientAuthenticated()) {
+                    event.preventDefault();
+                    $state.go('login.client');
                 }
             }
         });

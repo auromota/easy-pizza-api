@@ -10,7 +10,8 @@ app.service('LoginService', ['$resource', '$http', function ($resource, $http) {
         getAdminToken,
         unregisterAdmin,
         registerClient,
-        unregisterClient
+        unregisterClient,
+        isClientAuthenticated
     };
 
     function loginAdmin(user) {

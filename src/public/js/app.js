@@ -30,16 +30,14 @@ app.config(['$urlRouterProvider', '$stateProvider',
                 url: '/admin',
                 abstract: true,
                 templateUrl: 'partials/_admin_menu.html',
-                data: {
-                    authorization: true
-                }
+                controller: 'adminMenuController'
             })
             .state('admin.dashboard', {
                 url: '/dashboard',
                 controller: 'adminDashboardController',
                 templateUrl: 'partials/_admin_dashboard.html',
                 data: {
-                    authorization: true
+                    authorizationAdmin: true
                 }
             })
             .state('admin.drinks', {
@@ -47,7 +45,7 @@ app.config(['$urlRouterProvider', '$stateProvider',
                 controller: 'adminDashboardController',
                 templateUrl: 'partials/_admin_dashboard.html',
                 data: {
-                    authorization: true
+                    authorizationAdmin: true
                 }
             })
             .state('admin.toppings', {
@@ -55,7 +53,7 @@ app.config(['$urlRouterProvider', '$stateProvider',
                 controller: 'toppingsController',
                 templateUrl: 'partials/_admin_toppings.html',
                 data: {
-                    authorization: true
+                    authorizationAdmin: true
                 }
             })
             .state('admin.saveTopping', {
@@ -63,7 +61,7 @@ app.config(['$urlRouterProvider', '$stateProvider',
                 controller: 'saveToppingController',
                 templateUrl: 'partials/_admin_save_topping.html',
                 data: {
-                    authorization: true
+                    authorizationAdmin: true
                 },
                 params: {
                     topping: null
@@ -72,12 +70,16 @@ app.config(['$urlRouterProvider', '$stateProvider',
             .state('client', {
                 url: '/client',
                 abstract: true,
-                templateUrl: 'partials/_client_menu.html'
+                templateUrl: 'partials/_client_menu.html',
+                controller: 'clientMenuController'
             })
             .state('client.dashboard', {
                 url: '/dashboard',
                 controller: 'clientDashboardController',
-                templateUrl: 'partials/_client_dashboard.html'
+                templateUrl: 'partials/_client_dashboard.html',
+                data: {
+                    authorizationClient: true
+                }
             })
             .state('defineTable', {
                 url: '/defineTable',

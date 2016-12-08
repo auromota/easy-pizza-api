@@ -2,11 +2,19 @@ app.controller('initController', ['$scope', '$rootScope', 'LoginService', '$stat
     function ($scope, $rootScope, LoginService, $state) {
 
         $scope.client = function () {
-            $state.go('login.client');
+            if (LoginService.isClientAuthenticated()) {
+                $state.go('client.dashboard');
+            } else {
+                $state.go('login.client');
+            }
         };
 
         $scope.admin = function () {
-            $state.go('login.admin');
+            if (LoginService.isAdminAuthenticated()) {
+                $state.go('admin.dashboard');
+            } else {
+                $state.go('login.admin');
+            }
         }
     }
 ]);
