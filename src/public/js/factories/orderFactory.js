@@ -8,7 +8,8 @@ app.factory('Order', ['$http', 'LoginService', function ($http, LoginService) {
 
     return {
         openOrder,
-        getOrder
+        getOrder,
+        orderDrink
     };
 
     function openOrder(order) {
@@ -33,6 +34,13 @@ app.factory('Order', ['$http', 'LoginService', function ($http, LoginService) {
             );
         }
         return callback({ message: 'Order ID is missing.' });
+    }
+
+    function orderDrink(orderId, drink, callback) {
+        return $http.post('./api/orders/' + orderId + '/drinks', { drink }, { headers }).then((result) => {
+            LoginService.saveOrder(result.data);
+            callback(order);
+        });
     }
 
     function getToken() {
