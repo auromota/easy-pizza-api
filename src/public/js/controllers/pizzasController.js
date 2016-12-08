@@ -6,11 +6,4 @@ app.controller('pizzasController', ['$scope', 'Pizza', 'PriceService', function 
             return pizza;
         });
     });
-
-    // $scope.pizzas = $scope.pizzas.map(pizza => {
-    //     pizza.price = PriceService.getPizzaPrice(pizza);
-    //     return pizza;
-    // });
-    // $scope.pizzas.forEach(pizza => pizza.price = PriceService.getPizzaPrice(pizza));
-
 }]);
