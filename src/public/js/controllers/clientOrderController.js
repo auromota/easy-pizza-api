@@ -8,6 +8,7 @@ app.controller('clientOrderController', ['$scope', '$state', 'Order', 'PriceServ
                 pizza.price = PriceService.getPizzaPrice(pizza);
             });
             $scope.pizzasTotal = PriceService.getTotalPrice($scope.order.pizzas);
+            $scope.total = $scope.drinksTotal + $scope.pizzasTotal;
         });
 
         $scope.finishOrder = function () {

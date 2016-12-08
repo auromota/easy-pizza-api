@@ -12,12 +12,18 @@
                     <!-- Collect the nav links, forms, and other content for toggling -->
                     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                         <ul class="nav navbar-nav">
-                            <li class="active">
+                            <li ng-class="{'active' : isDashboard}">
                                 <a ui-sref="admin.dashboard"><img src="images/table-icon.png" class="table-icon"> Mesas <span class="sr-only">(current)</span></a>
                             </li>
-                            <li><a ui-sref="admin.drinks">Bebidas</a></li>
-                            <li><a ui-sref="admin.toppings">Ingredientes</a></li>
-                            <li><a ui-sref="admin.pizzas">Pizzas</a></li>
+                            <li ng-class="{'active' : isDrinks}">
+                                <a ui-sref="admin.drinks">Bebidas</a>
+                            </li>
+                            <li ng-class="{'active' : isToppings}">
+                                <a ui-sref="admin.toppings">Ingredientes</a>
+                            </li>
+                            <li ng-class="{'active' : isPizzas}">
+                                <a ui-sref="admin.pizzas">Pizzas</a>
+                            </li>
                         </ul>
 
                         <ul class="nav navbar-nav navbar-right">
