@@ -9,7 +9,8 @@ app.factory('Order', ['$http', 'LoginService', function ($http, LoginService) {
     return {
         openOrder,
         getOrder,
-        orderDrink
+        orderDrink,
+        orderPizza
     };
 
     function openOrder(order) {
@@ -38,6 +39,13 @@ app.factory('Order', ['$http', 'LoginService', function ($http, LoginService) {
 
     function orderDrink(orderId, drink, callback) {
         return $http.post('./api/orders/' + orderId + '/drinks', { drink }, { headers }).then((result) => {
+            LoginService.saveOrder(result.data);
+            callback(order);
+        });
+    }
+
+    function orderPizza(orderId, pizza, callback) {
+        return $http.post('./api/orders/' + orderId + '/pizzas', { pizza }, { headers }).then((result) => {
             LoginService.saveOrder(result.data);
             callback(order);
         });

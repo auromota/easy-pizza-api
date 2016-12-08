@@ -1,14 +1,21 @@
 app.service('PriceService', [
     function () {
 
-        let sumPriceFn = (total, item) => total + item.price;
+        const pizzaBasePrice = 10;
+
+        const sumPriceFn = (total, item) => total + item.price;
 
         return {
-            sumPrice
+            getTotalPrice,
+            getPizzaPrice
         };
 
-        function sumPrice(array) {
+        function getTotalPrice(array) {
             return array.reduce(sumPriceFn, 0);
+        }
+
+        function getPizzaPrice(pizza) {
+            return pizza.toppings.reduce(sumPriceFn, pizzaBasePrice);
         }
 
     }]

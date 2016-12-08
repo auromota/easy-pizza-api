@@ -43,8 +43,13 @@ export class OrderDao extends GenericDao {
         Order.findById(orderId)
             .populate('client')
             .populate('drinks')
-            .populate('pizzas')
-            .populate('pizzas.toppings')
+            .populate({
+                path: 'pizzas',
+                populate: {
+                    path: 'toppings',
+                    model: 'Topping'
+                }
+            })
             .populate('table')
             .exec(callback);
     }

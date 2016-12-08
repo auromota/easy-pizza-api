@@ -58,7 +58,7 @@ app.config(['$urlRouterProvider', '$stateProvider',
                 params: {
                     pizza: null
                 }
-            })                        
+            })
             .state('admin.drinks', {
                 url: '/drinks',
                 controller: 'adminDashboardController',
@@ -119,15 +119,14 @@ app.config(['$urlRouterProvider', '$stateProvider',
                     authorizationTable: true
                 }
             })
-            .state('defineTable', {
-                url: '/defineTable',
-                controller: 'defineTableController',
-                templateUrl: 'partials/_define_table.html'
-            })
-            .state('clientListMeal', {
-                url: '/clientListMeal',
-                controller: 'clientListMealController',
-                templateUrl: 'partials/_client_list_meal.html'
+            .state('client.pizzas', {
+                url: '/pizzas',
+                controller: 'clientPizzaController',
+                templateUrl: 'partials/_client_pizzas.html',
+                data: {
+                    isProtectedClient: true,
+                    authorizationTable: true
+                }
             });
 
     }
