@@ -3,7 +3,11 @@ app.controller('initController', ['$scope', '$rootScope', 'LoginService', '$stat
 
         $scope.client = function () {
             if (LoginService.isClientAuthenticated()) {
-                $state.go('client.dashboard');
+                if (LoginService.isTableSet()) {
+                    $state.go('client.dashboard');
+                } else {
+                    $state.go('table');
+                }
             } else {
                 $state.go('login.client');
             }

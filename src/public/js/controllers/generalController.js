@@ -5,6 +5,8 @@ app.controller('generalController', ['$scope', '$rootScope', 'LoginService', '$s
             if (toState.data) {
                 var isProtectedAdmin = toState.data.authorizationAdmin;
                 var isProtectedClient = toState.data.authorizationClient;
+                var isProtectedTable = toState.data.authorizationTable;
+                var tableNotSet = toState.data.tableNotSet;
                 if (isProtectedAdmin && !LoginService.isAdminAuthenticated()) {
                     event.preventDefault();
                     $state.go('login.admin');
@@ -12,6 +14,18 @@ app.controller('generalController', ['$scope', '$rootScope', 'LoginService', '$s
                 if (isProtectedClient && !LoginService.isClientAuthenticated()) {
                     event.preventDefault();
                     $state.go('login.client');
+                }
+                if (isProtectedTable && !LoginService.isTableSet()) {
+                    event.preventDefault();
+                    $state.go('table');
+                }
+                if (tableNotSet && LoginService.isTableSet()) {
+                    event.preventDefault();
+                    if (LoginService.isProtectedClient()) {
+                        $state.go('client.dashboard');
+                    } else {
+                        $state.go('login.client');
+                    }
                 }
             }
         });
