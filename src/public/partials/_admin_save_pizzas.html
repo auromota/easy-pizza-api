@@ -33,7 +33,7 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr ng-repeat="topping in toppings | filter:toppingName">
+                                            <tr ng-repeat="topping in toppings | filter:{name:toppingName}">
                                                 <td>
                                                     <span style="font-size:12px">{{topping.name}}</span>
                                                 </td>

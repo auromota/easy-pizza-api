@@ -48,7 +48,7 @@ app.controller('savePizzaController', ['$scope', 'Topping', 'Pizza', '$state', '
 
             // Test if user gave a name to the pizza
             if ($scope.pizza.name == null) {
-                alert("Dê um nome para a pizza animal.");
+                alert("Dê um nome para a pizza.");
                 return;
             }
 
