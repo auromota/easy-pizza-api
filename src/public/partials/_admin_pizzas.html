@@ -1,0 +1,43 @@
+<div class="container">
+    <div class="row">
+        <div class="col-sm-3 col-md-3 col-lg-3 col-md-offset-1">
+            <h1 class="title">Pizzas</h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-10 col-md-10 col-lg-10 col-md-offset-1">
+            <hr>
+            <button class="btn btn-primary" ui-sref="admin.savePizza"> <i class="fa fa-plus-square" aria-hidden="true"></i> </button>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-10 col-md-10 col-lg-10 col-md-offset-1">
+            <br>
+            <div class="panel panel-default">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Nome</th>
+                            <th>Valor</th>
+                            <th>Controle</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!--<tr ng-repeat="topping in toppings">
+                            <td><img src="{{topping.photo}}" class="topping-td"></td>
+                            <td>
+                                <span style="font-size:12px">{{topping.name}}</span>
+                            </td>
+                            <td>{{topping.price | currency : 'R$ ' : 2}}</td>
+                            <td>
+                                <button class="btn btn-mini btn-info" ui-sref="admin.saveTopping({topping: topping})"><i class="fa fa-pencil-square" aria-hidden="true"></i></button>
+                                <button class="btn btn-mini btn-danger" ng-click="remove(topping)"><i class="fa fa-minus-square" aria-hidden="true"></i></button>
+                            </td>
+                        </tr>-->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
