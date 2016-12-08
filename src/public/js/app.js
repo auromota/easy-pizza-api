@@ -53,17 +53,20 @@ app.config(['$urlRouterProvider', '$stateProvider',
             .state('admin.toppings', {
                 url: '/toppings',
                 controller: 'toppingsController',
-                templateUrl: 'partials/_toppings.html',
+                templateUrl: 'partials/_admin_toppings.html',
                 data: {
                     authorization: true
                 }
             })
-            .state('admin.newTopping', {
-                url: '/newTopping',
-                controller: 'newToppingController',
-                templateUrl: 'partials/_new_topping.html',
+            .state('admin.saveTopping', {
+                url: '/saveTopping',
+                controller: 'saveToppingController',
+                templateUrl: 'partials/_admin_save_topping.html',
                 data: {
                     authorization: true
+                },
+                params: {
+                    topping: null
                 }
             })
             .state('defineTable', {
