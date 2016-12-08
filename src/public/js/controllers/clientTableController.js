@@ -9,7 +9,7 @@ app.controller('clientTableController', ['$scope', '$state', 'Table', 'Order', '
             Order.openOrder({ table: table._id }).then(function (response) {
                 LoginService.sitTable(table.num);
                 Order.store(response.data);
-                $state.go('client.dashboard');
+                $state.go('client.orders');
             });
         }
 

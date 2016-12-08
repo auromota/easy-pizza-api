@@ -1,4 +1,4 @@
-app.controller('clientDashboardController', ['$scope', 'Table',
+app.controller('clientOrderController', ['$scope', 'Table',
     function ($scope, Table) {
 
         Table.query().then(function (response) {

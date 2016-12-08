@@ -22,7 +22,7 @@ app.controller('generalController', ['$scope', '$rootScope', 'LoginService', '$s
                 if (tableNotSet && LoginService.isTableSet()) {
                     event.preventDefault();
                     if (LoginService.isProtectedClient()) {
-                        $state.go('client.dashboard');
+                        $state.go('client.orders');
                     } else {
                         $state.go('login.client');
                     }

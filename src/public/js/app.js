@@ -101,9 +101,9 @@ app.config(['$urlRouterProvider', '$stateProvider',
                     tableNotSet: true
                 }
             })
-            .state('client.dashboard', {
-                url: '/dashboard',
-                controller: 'clientDashboardController',
+            .state('client.orders', {
+                url: '/orders',
+                controller: 'clientOrderController',
                 templateUrl: 'partials/_client_orders.html',
                 data: {
                     isProtectedClient: true,
