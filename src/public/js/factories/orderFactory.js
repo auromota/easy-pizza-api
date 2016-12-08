@@ -10,13 +10,16 @@ app.factory('Order', ['$http', 'LoginService', function ($http, LoginService) {
         openOrder,
         getOrder,
         orderDrink,
-        orderPizza
+        orderPizza,
+        endOrder
     };
 
     function openOrder(order) {
-        return $http.post('./api/orders', order, {
-            headers
-        });
+        return $http.post('./api/orders', order, { headers });
+    }
+
+    function endOrder(orderId) {
+        return $http.delete('./api/orders/' + orderId, { headers });
     }
 
     function getOrder(callback) {

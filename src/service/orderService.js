@@ -10,7 +10,7 @@ const dao = new OrderDao();
 export default class OrderService {
 
     static findOrder(req, res, next) {
-        if (Validator.findOrder(req.params)) {
+        if (Validator.identify(req.params)) {
             dao.findPopulatedById(req.params.id, (err, order) => {
                 if (err) {
                     return next(err);
@@ -29,7 +29,7 @@ export default class OrderService {
                 createOrder
             ], (err, results) => {
                 if (err) {
-                    setTableFree();
+                    setTableFree(req.body.table);
                     removeIncompleteOrder();
                     return;
                 }
@@ -46,7 +46,7 @@ export default class OrderService {
             TableService.setAvailability(req.body.table, false, req.user.client, callback);
         }
 
-        function setTableFree() {
+        function setTableFree(table) {
             TableService.setAvailability(req.body.table, true, '', () => { });
         }
 
@@ -90,6 +90,21 @@ export default class OrderService {
                     return next(err);
                 }
                 io.emit('orderUpdated', order);
+                res.status(200).json(order);
+            });
+        } else {
+            next(ErrorUtils.BadRequest);
+        }
+    }
+
+    static endOrder(req, res, next) {
+        if (Validator.identify(req.params)) {
+            dao.endOrder(req.params.id, (err, order) => {
+                if (err) {
+                    return next(err);
+                }
+                TableService.setAvailability(order.table, true, '', () => { });
+                io.emit('orderDeleted', order);
                 res.status(200).json(order);
             });
         } else {

@@ -41,7 +41,7 @@ const orderDrinkValidator = validator({
     additionalProperties: false
 });
 
-const findOrderValidator = validator({
+const identifyValidator = validator({
     required: ['id'],
     type: 'object',
     properties: {
@@ -63,8 +63,8 @@ const Validator = {
     orderDrink(data) {
         return orderDrinkValidator(data);
     },
-    findOrder(data) {
-        return findOrderValidator(data);
+    identify(data) {
+        return identifyValidator(data);
     }
 };
 

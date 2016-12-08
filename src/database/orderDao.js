@@ -59,6 +59,12 @@ export class OrderDao extends GenericDao {
         Order.findOneAndRemove(query, callback);
     }
 
+    endOrder(orderId, callback) {
+        let update = { finalDate: new Date() };
+        let options = { new: true };
+        Order.findByIdAndUpdate(orderId, update, options, callback);
+    }
+
     addPizza(orderId, pizzaId, callback) {
         Order.findById(orderId, (err, order) => {
             if (err) {

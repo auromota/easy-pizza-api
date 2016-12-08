@@ -1,5 +1,5 @@
-app.controller('clientOrderController', ['$scope', 'Order', 'PriceService',
-    function ($scope, Order, PriceService) {
+app.controller('clientOrderController', ['$scope', '$state', 'Order', 'PriceService', 'LoginService',
+    function ($scope, $state, Order, PriceService, LoginService) {
 
         Order.getOrder((err, order) => {
             $scope.order = order;
@@ -9,6 +9,19 @@ app.controller('clientOrderController', ['$scope', 'Order', 'PriceService',
             });
             $scope.pizzasTotal = PriceService.getTotalPrice($scope.order.pizzas);
         });
+
+        $scope.finishOrder = function () {
+            Order.endOrder($scope.order._id).then(
+                (order) => {
+                    LoginService.removeTable();
+                    LoginService.removeOrder();
+                    $state.go('table');
+                },
+                (err) => {
+                    console.log(err);
+                }
+            )
+        }
 
     }
 ]);

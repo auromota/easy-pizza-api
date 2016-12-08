@@ -46,6 +46,7 @@ function getRouter() {
     router.post('/api/orders', AuthHandler.authorizeRequest, OrderService.openOrder);
     router.post('/api/orders/:id/pizzas', AuthHandler.authorizeRequest, OrderService.orderPizza);
     router.post('/api/orders/:id/drinks', AuthHandler.authorizeRequest, OrderService.orderDrink);
+    router.delete('/api/orders/:id', AuthHandler.authorizeRequest, OrderService.endOrder);
 
     return router;
 }
