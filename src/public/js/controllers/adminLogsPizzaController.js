@@ -10,7 +10,7 @@ app.controller('adminLogsPizzaController', ['$scope', 'Order', 'PriceService',
 
         function calculatePizzaArray(orders) {
             orders.forEach(order => processOrder(order));
-            orders.sort((a, b) => a.numOrders > b.numOrders ? -1 : 1);
+            $scope.pizzas.sort((a, b) => a.numOrders > b.numOrders ? -1 : 1);
         }
 
         function processOrder(order) {
