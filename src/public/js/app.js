@@ -67,6 +67,17 @@ app.config(['$urlRouterProvider', '$stateProvider',
                     authorizationAdmin: true
                 }
             })
+            .state('admin.saveDrinks', {
+                url: '/saveDrink',
+                controller: 'saveDrinkController',
+                templateUrl: 'partials/_admin_save_drink.html',
+                data: {
+                    authorizationAdmin: true
+                },
+                params: {
+                    drink: null
+                }
+            })            
             .state('admin.toppings', {
                 url: '/toppings',
                 controller: 'toppingsController',

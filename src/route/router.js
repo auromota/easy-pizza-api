@@ -24,7 +24,8 @@ function getRouter() {
     // Drinks
     router.get('/api/drinks', AuthHandler.authorizeRequest, DrinkService.find);
     router.post('/api/drinks', AuthHandler.authorizeRequest, DrinkService.create);
-    router.put('/api/drinks', AuthHandler.authorizeRequest, DrinkService.update);
+    router.put('/api/drinks/:id', AuthHandler.authorizeRequest, DrinkService.update);
+    router.delete('/api/drinks/:id', AuthHandler.authorizeRequest, DrinkService.remove);
 
     // Toppings
     router.get('/api/toppings', AuthHandler.authorizeRequest, ToppingService.find);
